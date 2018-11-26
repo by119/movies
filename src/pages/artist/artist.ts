@@ -111,9 +111,9 @@ export class ArtistPage {
     }
     0 == this.page[this.tabs] && this.doInfinite();
     this.infiniteScroll.enable(this.infiniteScrollState[this.tabs]);
-    // if (this.items[this.tabs].length > 0) {
-    //   setTimeout(() => { this.cp.getNode(); }, 100)
-    // }
+    if (this.items[this.tabs].length > 0) {
+      setTimeout(() => { this.cp.getNode(); }, 100)
+    }
   }
   doInfinite() {
     this.params = {
@@ -129,9 +129,9 @@ export class ArtistPage {
         this.res[this.tabs] = e;
         this.items[this.tabs] = this.items[this.tabs].concat(this.res[this.tabs].data);
         this.infiniteScroll.complete();
-        // if (this.items[this.tabs].length > 0) {
-        //   setTimeout(() => { this.cp.getNode(); }, 100)
-        // }
+        if (this.items[this.tabs].length > 0) {
+          setTimeout(() => { this.cp.getNode(); }, 100)
+        }
         if (this.items[this.tabs].length == this.res[this.tabs].total) {
           this.infiniteScrollState[this.tabs] = !1;
           this.infiniteScroll.enable(this.infiniteScrollState[this.tabs]);
