@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>我发布的需求</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="organ-box" *ngFor="let item of needInfoList;let i=index;">
+      <ion-icon class="del-btn" name="ios-trash-outline" (click)="needDelete(item.id,i)"></ion-icon>
+      <organ  lastPage="demand" [item]="item" lastPage="demand"></organ>
+  </div>
+  
+  <ion-infinite-scroll (ionInfinite)="doInfinite()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

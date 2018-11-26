@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>选取艺人</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="notice-head">
+    <img src="{{demandChooseInfo?.cover_img}}" alt="" class="head-bg">
+    <div class="bg-cover"></div>
+    <ion-item class="head-info" padding *ngIf="demandChooseInfo">
+      <img class="clearfix" src="{{demandChooseInfo?.poster}}" alt="">
+      <div class="notice-info clearfix">
+        <p>类型：{{demandChooseInfo?.annunciateType.name}}</p>
+        <p>导演：{{demandChooseInfo?.director}}</p>
+        <p>开机时间：{{demandChooseInfo?.begin_time}}</p>
+        <p>周期：{{demandChooseInfo?.cycle}}</p>
+        <p>地点：{{demandChooseInfo?.place}}</p>
+        <h4>共招募
+          <span>{{demandChooseInfo?.roles_count}}</span>人</h4>
+      </div>
+    </ion-item>
+  </div>
+  <div class="demand_choose">
+    <div class="demand_choose_box" *ngFor="let item of annunciateRoles;let i = index;">
+      <div class="demand_choose_content">
+        <h5>角色{{i+1}}：{{item.role_name}} {{item.role_sex}}</h5>
+        <p>{{item.content}}</p>
+      </div>
+      <div *ngIf="item?.user_id!=0" class="demand_choose_roles">
+        <div>
+          <img src="{{item?.avatar}}" alt="">
+          <em>{{item?.user.nickname}}</em>
+          <button ion-button color="change" (click)="cp.goto({view:'artist-works',producer_id:producerId,role_id:item.id})">重新选取</button>
+        </div>
+      </div>
+      <div *ngIf="item?.user_id==0" class="demand_choose_roles">
+        <em style="color:#177079">未选取艺人</em>
+        <button ion-button color="change"  (click)="cp.goto({view:'artist-works',producer_id:producerId,role_id:item.id})">选取艺人</button>
+      </div>
+    </div>
+  </div>
+</ion-content>

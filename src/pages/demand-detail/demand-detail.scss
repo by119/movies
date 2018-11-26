@@ -1,0 +1,161 @@
+page-demand-detail {
+    // ion-header {
+    //     .toolbar-title-ios,
+    //     .back-button.show-back-button {
+    //         color: #fff;
+    //     }
+    // }
+    // .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+    //     background: transparent;
+    //     border: unset;
+    // }
+    .scroll-content {
+        background-color: #fafafa;
+        padding-bottom:3rem;
+    }
+    .item-ios {
+        background-color: transparent;
+    }
+    .item-ios.item-block .item-inner {
+        border: unset;
+        overflow: hidden;
+    }
+    .notice-head {
+        position: relative;
+        .head-bg {
+            height: 24rem;
+        }
+        .head-info {
+            position: absolute;
+            top: 3.5rem;
+            img {
+                    width: 45%;
+                    float: left;
+                    object-fit: cover;
+                    height: 14rem;
+                }
+                .notice-info {
+                    width: 55%;
+                    float: left;
+                    h4,p {
+                        margin: 0;
+                        line-height: 2rem;
+                        overflow: hidden;
+                        text-overflow:ellipsis;
+                        white-space: nowrap;
+                        padding: 0 0 0 1rem;
+                        color: #fff;
+                    }
+                    h4 {
+                        color: #fff;
+                        line-height: 4rem;
+                        span {
+                            font-size: 3rem;
+                        }
+                    }
+                }
+        }
+    }
+    .label-ios{
+        margin-top: 0 !important;
+    }
+    .tile{
+        font-size:1.6rem;
+    }
+
+    .list-all{
+        margin: 0 1rem;
+        overflow: hidden;
+    }
+    .list-title {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    .all{
+        background:#fff;
+        overflow: hidden;
+    }
+    .list-title-con{
+        white-space:normal !important;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        color: #18676E;
+    }
+    .list-title-time{
+        height: 2rem;
+        line-height: 2rem;
+        color: #9A9A9A;
+        font-size: 0.5rem;
+        overflow: hidden;
+        margin-bottom: 0.7rem !important;
+        .icon-time{
+            display: inline-block;
+            font-size: 1.8rem;
+            float: left;
+        }
+        .time{
+            margin-right: 0.5rem;
+        }
+    }
+    .logistics{
+        margin: 0 1rem;
+        background: #fff;
+    }
+    .con-list{
+        width: 100%;
+        overflow: hidden;
+        // margin-bottom: 1rem;
+        p{
+            margin: 0 1rem;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-size: 1.4rem;
+            .con-list-span{
+                display: inline-block;
+                width: 30%;
+                color: #9A9A9A;
+                font-weight: 500;
+                font-size:1.4rem;
+            }
+        }
+    }
+    .all-introduce{
+        white-space:normal !important;
+        font-size: 1.4rem;
+        color: #999;
+        margin: 0 1rem;
+        line-height: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    .sole_box{
+        height:auto;
+        width:100%;
+        overflow: hidden;
+        border-bottom:1px solid #d9d9d9;
+    }
+    .sole{
+        font-size:1.6rem;
+        margin:0 1rem;
+        color: #333;
+        line-height: 2.5rem;
+        .sole-name{
+            margin-right: 1rem;
+        }
+    }
+    .collect {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: #ff983c;
+        // background-color: #fff;
+        border: 1px solid #ff983c;
+        padding: 0 .7em;
+        line-height: 1.8rem;
+        font-size: 1.2rem;
+        border-radius: 1.8rem;
+        box-shadow: 0px 0px 2px #abaaaa;
+    }
+}

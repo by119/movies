@@ -1,0 +1,218 @@
+@font-face {
+    font-family: 'iconfont';  /* project id 903522 */
+    src: url('//at.alicdn.com/t/font_903522_h3qzhuswid.eot');
+    src: url('//at.alicdn.com/t/font_903522_h3qzhuswid.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_903522_h3qzhuswid.woff') format('woff'),
+    url('//at.alicdn.com/t/font_903522_h3qzhuswid.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_903522_h3qzhuswid.svg#iconfont') format('svg');
+  }
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:1.8rem;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-blank:before{content: '\e607';} //空白
+.icon-upload-r:before{content: '\e68d';} //上传 圆
+.icon-upload-s:before{content: '\e603';} //上传 方
+
+.icon-major:before{content: '\e664';} //专业证书
+.icon-grade:before{content: '\e665';} //毕业证书
+.icon-art:before{content: '\e604';} //演艺经历
+
+// 我的介绍
+.icon-date:before{content: '\e6b2';} //档期
+.icon-album:before{content: '\e623';} //相册
+.icon-video:before{content: '\e634';} //视频
+.icon-modify:before{content: '\e62f';} //修改
+
+
+//菜单
+.icon-work:before{content: '\ea36';} //工作状态
+.icon-intro:before{content: '\e720';} //我的介绍
+.icon-letter:before{content: '\e67b';} //我的私信
+.icon-bell:before{content: '\e633';} //我的私信-铃铛
+
+.icon-demand:before{content: '\e636';} //我发布的需求
+.icon-identity:before{content: '\eb63';} //艺人认证
+.icon-collect:before{content: '\e606';} //我的收藏
+.icon-set:before{content: '\e608';} //我的设置
+// 诉讼支持
+.icon-lawyer:before{content: '\e601';} //律师团队
+.icon-case:before{content: '\e619';} //经典案例
+
+// 个人中心
+.artist-center {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    .avatar {
+        margin-top: 4rem;
+        text-align: center;
+        img {
+            width: 10rem;
+            border-radius: 50%;
+        }
+        p {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+        span {
+            display: inline-block;
+            width: 1.8rem;
+            height: 1.8rem;
+            line-height: 1.8rem;
+            font-size: 1.2rem;
+            margin-left: .5rrem;
+            text-align: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url(../assets/icon/vip_bg.png);
+            vertical-align: middle;
+        }
+    }
+    ion-list {
+        color: #fff;
+        font-size: 1.5rem;
+        margin-bottom: 1.8rem;
+        font-weight: 600;
+        ion-icon {
+            font-weight: 600;
+            margin: 0 .8rem 0 2rem;
+        }
+    }
+}
+// 无记录
+.blank {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #999;
+    ion-icon {
+        font-size: 10rem;
+    }
+}
+// 筛选弹框
+.filter-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: transparent;
+    .filter-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+    }
+    .filter {
+        width: 60%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: #fff;
+        padding: .5rem .5rem  0 .5rem;
+        overflow: scroll;
+        p:first-child {
+            color: #999;
+        }
+        .options {
+            padding: .5rem 0;
+            color: #333;
+            p:first-child {
+                color: #333;
+                margin-bottom: .5rem;
+            }
+            .option {
+                border-radius: .3rem;
+                overflow: hidden;
+                float: left;
+                width:30%;
+                line-height: 2.4rem;
+                font-size: 1.2rem;
+                background-color: #e9e9e9;
+                text-align: center;
+                margin: 0% 4% 4% 0;
+            }
+            .option:nth-child(3n+1) {
+                margin-right: 0;
+            }
+        }
+        .filter-active {
+            color: #fff;
+            background: -webkit-linear-gradient(left, #49afa4 , #14666e); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(right, #49afa4, #14666e); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(right, #49afa4, #14666e); /* Firefox 3.6 - 15 */
+            background: linear-gradient(to right, #49afa4 , #14666e); /* 标准的语法 */
+        }
+        .filter-btn {
+            display: flex;
+            button {
+                flex: 1;
+                margin: 1rem;
+                height: 100%;
+            }
+        }
+    }
+}
+// 头部
+ion-header {
+    .toolbar-ios-change .toolbar-background-ios {
+        background: -webkit-linear-gradient(left, #49afa4 , #14666e); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(right, #49afa4, #14666e); /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(right, #49afa4, #14666e); /* Firefox 3.6 - 15 */
+        background: linear-gradient(to right, #49afa4 , #14666e); /* 标准的语法 */
+    }
+    .segment-md .segment-button {
+        color: #333;
+    }
+    .segment-md .segment-button.activated,
+    .segment-md .segment-button.segment-activated {
+        color: #14666e;
+        border-color:#14666e;
+    }
+    .avatar {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: transparent;
+        border-radius: 50%;
+        float: left;
+        margin: 0 .2rem;
+    }
+}
+/* 清除浮动  */
+.clearfix::after,.clearfix::before{
+    content:"";
+    height:0;
+    line-height:0;
+    display:block;
+    clear:both;
+    visibilty: hidden;
+  }
+  
+  .clearfix{
+    zoom:1;
+  }
+p {
+    margin: 0;
+}
+// 按钮背景色
+.button-ios-change {
+    height: 100%;
+    padding: 0 1em;
+    line-height: 2.4rem;
+    background: -webkit-linear-gradient(left, #49afa4 , #14666e); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #49afa4, #14666e); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #49afa4, #14666e); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #49afa4 , #14666e); /* 标准的语法 */
+}
+

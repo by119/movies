@@ -1,0 +1,95 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {CommonProvider} from "../../providers/common/common";
+
+@IonicPage({
+  name: 'artist-detail',
+  segment: 'artist-detail/:title/:id'
+})
+@Component({
+  selector: 'page-artist-detail',
+  templateUrl: 'artist-detail.html',
+})
+export class ArtistDetailPage {
+  tabs: any = '0';
+  pageName = 'artist-detail';
+  isCollect = true;  
+  introList: any = [];   //艺人工作经历
+  dataList = [];    //艺人档期
+  artistImg = [];   //艺人相册
+  videoList = [];   //艺人视频
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cp:CommonProvider
+  ) {
+  }
+
+  actionerInfo = "";    //艺人详情
+  ionViewDidLoad() {
+    console.log(this.navParams, 'ionViewDidLoad ArtistDetailPage');
+    this.actiorDetail();    //艺人详情
+    this.expriceList();     //艺人工作经历列表
+    this.actorList();       //艺人档期
+  }
+
+  // 艺人详情
+  actiorDetail(){
+    this.cp.getDataInfo("user_profile/getlist",{
+      user_id:this.navParams.get("id")
+    }).then((res:any) => {
+      this.actionerInfo = res.data[0];
+      console.log(this.actionerInfo,'这是艺人详情')
+    })
+  }
+
+  // 艺人工作经历
+  expriceList(){
+    this.cp.getDataInfo("areist_experience_of_employment/getlist",{
+      user_id:this.navParams.get("id")
+    }).then((res:any) => {
+      this.introList = res.data;
+      console.log(res.data,'这是艺人的工作经历列表')
+    })
+  }
+
+  // 艺人档期
+  actorList(){
+    this.cp.getDataInfo("areist_morietheaterschedule/time",{
+      user_id:this.navParams.get("id")
+    }).then((res:any) => {
+      this.dataList = res.data;
+      console.log(res.data[0][0],'这是艺人的档期')
+    })
+  }
+
+  // 艺人相册   artistImg
+  actorPhotoList(){
+    this.cp.getDataInfo("areist_album/getlist",{
+      user_id:this.navParams.get("id")
+    }).then((res:any) => {
+      this.artistImg = res.data;
+      console.log(res.data,'这是艺人的相册')
+    })
+  }
+
+  // 艺人视频
+  videoLists(){
+    this.cp.getDataInfo("areist_video/getlist",{
+      user_id:this.navParams.get("id")
+    }).then((res:any) => {
+      this.videoList = res.data;
+      console.log(res,'这是艺人的视频')
+    })
+  }
+
+  collect() {
+    console.log('收藏艺人');
+  }
+  changeSeg() {
+    console.log('切换tab')
+  }
+  contactTA() {
+    console.log('联系TA')
+  }
+}

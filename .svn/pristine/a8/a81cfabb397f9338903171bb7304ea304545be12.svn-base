@@ -1,0 +1,45 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+
+@IonicPage({ name: 'intro' })
+@Component({
+  selector: 'page-intro',
+  templateUrl: 'intro.html',
+})
+export class IntroPage {
+  introList: any = [{ pic_url: '../../assets/imgs/legal_head.png', icon_url: '../../assets/imgs/legal_icon.png', title: '廖赫律师事务所', intro: '文字介绍，这是关于此律师所的文字介绍，文字介绍，这是关于此律师所的简单的文字介绍，这是关于此律师所的简单的文字介绍，这是关于此律师所的简单的文字介绍。', lawyer: [{ lawyer_id: 1, name: '刘健刘健刘a', tips: '从业年', pic_url: '../../assets/imgs/lawyer1.png' }, { lawyer_id: 2, name: '郝帅', tips: '资深律师', pic_url: '../../assets/imgs/lawyer2.png' }, { lawyer_id: 3, name: '刘健', tips: '从业律师', pic_url: '../../assets/imgs/lawyer1.png' }], case: [{ case_id: 12, pic_url: '../../assets/imgs/notice.png', title: '《星路启程》演员招募合约' }, { case_id: 11, pic_url: '../../assets/imgs/notice1.png', title: '《你好先生们》演员招募合约' }] }];
+  dataList = [{state:0,type:0,list:[{month:'10月',state:1},{month:'11月',state:1},{month:'12月',state:0},{month:'1月',state:1},{month:'2月',state:0},{month:'3月',state:1}]}];
+  albumList = [{id:1,pic_url:'../../assets/imgs/legal_head.png',title:'律师的相册呀'},{id:2,pic_url:'../../assets/imgs/legal_head.png',title:'相册名'},{id:3,pic_url:'../../assets/imgs/avatar.png',title:'头像相册'},{id:4,pic_url:'../../assets/imgs/avatar2.png',title:'头像'},{id:5,pic_url:'../../assets/imgs/notice.png',title:'头像册'}];
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public cp: CommonProvider) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad IntroPage');
+    this.introList = this.introList[0];
+  }
+  confirmDelWork() {
+    console.log('删除工作经历');
+  }
+  addWork() {
+    console.log('添加更多工作经历');
+  }
+  confirmDelAlbum(id){
+    console.log('删除相册',id);
+  }
+  addAlbum(){
+    console.log('添加更多相册');
+  }
+  confirmDelVideo(id){
+    console.log('删除视频',id);
+  }
+  addVideo(){
+    console.log('添加更多视频');
+  }
+  uploadMyData(){
+    console.log('确认提交我的资料');
+  }
+}

@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-buttons start>
+      <button *ngIf="cp?.u?.id" ion-button icon-only menuToggle>
+        <!-- <ion-img style="width: 2rem; height:2rem;" src="../assets/icon/tab02.png"></ion-img> -->
+        <img class="avatar" src="{{cp?.u?.avatar ? cp?.u?.avatar:'../../../../assets/imgs/avatar.png'}}" alt="">
+      </button>
+      <div *ngIf="!cp?.u?.id" start class="login-btn" (click)="cp.goto({view:'login'})">登录</div>
+    </ion-buttons>    
+    <input class="search-btn" type="text" placeholder="请输入您需要搜索的內容" readonly="readonly" (click)="cp.goto({view:'search'})">
+    <!-- <ion-searchbar placeholder="请输入您需要搜索的內容" type="text" (ionInput)="getItems($event)" [disabled]="disabled"></ion-searchbar> -->
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cp.goto({view:'search'})">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="slide-box">
+    <img class="head-bg" src="{{slideBg}}" alt="">
+    <ion-slides #avatarSilde effect="coverflow" centeredSlides spaceBetween="10" initialSlide='1' slidesPerView='1.3' (ionSlideDidChange)="slideChanged()">
+      <ion-slide *ngFor="let item of slideImg;let i=index;">
+        <img src="{{item?.pic_url}}" alt="">
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <ion-item class="content-hot">
+    <ion-item class="hot-title">热门艺人</ion-item>
+    <ion-item class="artist">
+      <ion-slides #artistSilde spaceBetween="20" style="height:48.9px;" initialSlide='1' slidesPerView='5.5' (ionSlideDidChange)="slideHotChanged()">
+        <ion-slide *ngFor="let item of artistImg;let i=index;" class="hot_artistimg" style="height:49px;">
+          <img src="{{item?.cover_img ? item?.cover_img : '../../../../assets/imgs/avatar.png'}}" alt="" [ngClass]="{'current-hot':currentHot==i}" (click)="curHot(i)" style="min-height:49px;min-width:49px;">
+        </ion-slide>
+      </ion-slides>
+    </ion-item>
+    <ion-item class="artist-detil">
+      <ion-slides #artistDetilSilde centeredSlides spaceBetween="20" initialSlide='1' slidesPerView='1.7' (ionSlideDidChange)="slideHotDetilChanged()">
+        <ion-slide class="artist-list" *ngFor="let item of artistImg;let i=index;" (click)="cp.goto({view:'artist-detail',id:item.user_id})">
+          <ion-item>
+            <img src="{{item?.cover_img ? item?.cover_img : '../../../../assets/imgs/avatar.png'}}" alt="" class="artist_img">
+            <h6 class="artist-name">{{item?.name || '&nbsp;'}}</h6>
+            <p>
+              <span>{{item?.sex==0?"男":"女"}}</span>
+              <span>{{item?.age|| '&nbsp;'}}岁</span>
+              <span>{{item?.cm|| '&nbsp;'}}cm</span>
+              <span>{{item?.weight|| '&nbsp;'}}kg</span>
+            </p>
+            <p>
+              <span style="font-size: 1.3rem;">{{item?.category[0]?.name || '未知'}}</span>
+            </p>
+          </ion-item>
+        </ion-slide>
+      </ion-slides>
+    </ion-item>
+    <ion-item class="hot-title">热门通告</ion-item>
+    <ion-item class="notice">
+        <notice *ngFor="let item of notices" [item]="item"></notice>
+    </ion-item>
+  </ion-item>
+</ion-content>

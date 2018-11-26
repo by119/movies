@@ -1,0 +1,26 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+/**
+ * Generated class for the LegalSuggestPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({ name: 'legal-suggest' })
+@Component({
+  selector: 'page-legal-suggest',
+  templateUrl: 'legal-suggest.html',
+})
+export class LegalSuggestPage {
+  legalList:any = [{ pic_url: '../../assets/imgs/legal_head.png', icon_url: '../../assets/imgs/legal_icon.png', title: '廖赫律师事务所', intro: '文字介绍，这是关于此律师所的文字介绍，文字介绍，这是关于此律师所的简单的文字介绍，这是关于此律师所的简单的文字介绍，这是关于此律师所的简单的文字介绍。', lawyer: [{ lawyer_id: 1, name: '刘健', tips: '从业12年、资深律师', pic_url: '../../assets/imgs/lawyer1.png' }, { lawyer_id: 2, name: '郝帅', tips: '从业12年、资深律师', pic_url: '../../assets/imgs/lawyer2.png' }, { lawyer_id: 3, name: '刘健', tips: '从业12年、资深律师', pic_url: '../../assets/imgs/lawyer1.png' }], case: [{ case_id: 12, pic_url: '../../assets/imgs/notice.png', title: '《星路启程》演员招募合约' }, { case_id: 11, pic_url: '../../assets/imgs/notice1.png', title: '《你好先生们》演员招募合约' }] }];
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LegalSuggestPage');
+    this.legalList = this.legalList[0];
+  }
+
+}

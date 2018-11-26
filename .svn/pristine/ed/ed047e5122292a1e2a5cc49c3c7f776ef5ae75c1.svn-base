@@ -1,0 +1,170 @@
+page-checkin {
+  .tagmores {
+    color: #666;
+    float: right;
+  }
+  img {
+    object-fit: cover;
+  }
+  .roleIntro {
+    margin-top: 1rem;
+    p {
+      color: #333;
+      line-height: 2rem;
+      white-space: normal;
+      border-bottom: 1px solid #fafafa;
+      padding: 0.5rem 0;
+    }
+  }
+
+  .scroll-content {
+    background-color: #fafafa;
+  }
+
+  .item-ios.item-block .item-inner {
+    border: unset;
+  }
+  .list-ios {
+    margin: 0;
+  }
+  .logistics {
+    font-size: 1.5rem;
+    border-bottom: 2px solid #fafafa;
+  }
+  .label-ios {
+    // font-weight: 600;
+    font-size: 1.5rem;
+  }
+  .select-text {
+    font-size: 1.5rem;
+    color: #666;
+  }
+  .con-all {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 0.2rem;
+    .con-all-content {
+      width: 100%;
+      background: #fff;
+      overflow: hidden;
+      .con-all-title {
+        float: left;
+        font-size: 1.7rem;
+        color: #333;
+        // font-weight: 600;
+      }
+      .con-all-input {
+        width: 65%;
+        float: right;
+        text-align: right;
+        border: none;
+        font-size: 1.5rem;
+        color: #666;
+      }
+      .con-all-title1 {
+        width: 100%;
+        font-size: 1.7rem;
+        color: #333;
+      }
+      .upload {
+        overflow: hidden;
+        width: 100%;
+        .icon-upload-s {
+          font-size: 8rem;
+          margin: 2rem;
+          color: #eaeaea;
+          // font-weight: 300
+        }
+        .upload-ti {
+          float: right;
+          font-size: 1rem;
+          color: #4bae9c;
+          line-height: 10rem;
+        }
+        .tian {
+          font-size: 2.5rem;
+        }
+        .upload-title {
+          color: #4bae9c;
+          font-size: 1.5rem;
+        }
+      }
+      .upload1 {
+        overflow: hidden;
+        width: 100%;
+
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .tian {
+          font-size: 3rem;
+          color: #eaeaea;
+          margin-top: 1rem;
+        }
+        .upload-title {
+          color: #4bae9c;
+          font-size: 1.5rem;
+          margin-left: 1rem;
+          margin-top: 1rem;
+        }
+      }
+      .con-text {
+        margin-top: 1rem;
+        width: 100%;
+        height: 10rem;
+        background: #f9f9f9;
+        border: none;
+        padding: 1rem;
+        color: #666;
+        border-radius: 4px;
+      }
+    }
+    /*css reset*/
+    .button-ios:not([round]) {
+      border-radius: 8px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    button,
+    .button {
+      line-height: 1;
+    }
+  }
+
+  // 类型、风格标签
+  .checkin-type {
+    margin-top: 1rem;
+    word-break: keep-all;
+    white-space: initial;
+    word-wrap: break-word;
+    span {
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+      border-radius: 2.4rem;
+      text-align: center;
+      padding: .1em 2em .1em 1em;
+      background-color: pink;
+      position: relative;
+      color: #fff;
+      margin: 0 .5rem .5rem 0;
+      display: inline-block;
+      ion-icon {
+        position: absolute;
+        right: 0.5em;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2.2rem;
+      }
+    }
+  }
+}

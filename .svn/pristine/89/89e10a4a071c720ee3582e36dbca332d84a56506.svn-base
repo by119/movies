@@ -1,0 +1,40 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+
+@IonicPage({
+  name: 'notice-detail',
+  segment: 'notice-detail/:id'
+})
+@Component({
+  selector: 'page-notice-detail',
+  templateUrl: 'notice-detail.html',
+})
+export class NoticeDetailPage {
+  headBg = 'https://t12.baidu.com/it/u=373943879,1801230783&fm=76';
+  notice = {};
+  artistList = [{ src: '../../assets/imgs/avatar.png', name: '西蒙', type: '1', vip: 2 }];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cp: CommonProvider) {
+  }
+  ionViewWillEnter() {
+    console.log('enter')
+  }
+  ionViewDidLoad() {
+    this.cp.getNode();
+    console.log('ionViewDidLoad NoticeDetailPage', this.navParams);
+    this.noticeDetail();     //通告详情
+  }
+
+  noticeDetail() {
+    this.cp.getData("annunciate/detail", {
+      id: this.navParams.get("id")
+    }).then((res: any) => {
+      this.notice = res.data;
+      this.artistList = res.data.annunciateRoles;
+      if (this.artistList.length > 0) {
+        setTimeout(() => { this.cp.getNode(); }, 100)
+      }
+    })
+  }
+
+}

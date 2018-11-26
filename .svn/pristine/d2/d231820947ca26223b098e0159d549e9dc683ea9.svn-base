@@ -1,0 +1,61 @@
+.organ-list {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: .5rem;
+    overflow: hidden;
+    background-color: #fff;
+    position: relative;
+    .organ-detail {
+        position: relative;
+    }
+    img {
+        float: left;
+        width: 8.125rem;
+        height: 10rem;
+        object-fit: cover;
+        border-radius: .5rem;
+        margin-right: 1rem;
+    }
+    .organ-info {
+        float: left;
+        p {
+            line-height: 2.4rem;
+            color: #666;
+        }
+        .organ-title {
+            color: #333;
+            font-size: 1.6rem;
+            margin-bottom: .5rem;
+            font-weight: 600;
+        }
+    }
+    .organ-num {
+        position: absolute;
+        right: 1rem;
+        bottom: 2.5rem;
+        text-align: center;
+        color: #c0c0c0;
+        .num {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #e71f19;
+        }
+    }
+    .del-btn {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        color: #999;
+        font-size: 2rem;
+    }
+    .letter-btn {
+        color: #49afa4;
+        line-height: 3.3rem;
+        border-top: 2px solid #fafafa;
+        margin-top: 1rem;
+        button {
+            float: right;
+        }
+    }
+}

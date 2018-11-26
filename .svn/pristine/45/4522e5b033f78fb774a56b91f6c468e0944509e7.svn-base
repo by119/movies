@@ -1,0 +1,125 @@
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, InfiniteScroll, Content } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+/**
+ * Generated class for the ArtistPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({ name: 'artist' })
+@Component({
+  selector: 'page-artist',
+  templateUrl: 'artist.html',
+})
+export class ArtistPage {
+  @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll;
+  @ViewChild(Content) content: Content;
+  tabs: any = "0"; items = [[], []]; page = [0, 0];
+  res = [];
+  params: any = {};
+  infiniteScrollState = [!0, !0];
+  filter = !1;
+  artistList = [{ src: '../../assets/imgs/avatar.png', name: '西蒙', type: '1', vip: 2 }, { src: '../../assets/imgs/notice2.png', name: '西蒙', type: '2', vip: 2 }, { src: '../../assets/imgs/organ1.png', name: '西蒙', type: '3', vip: 2 }, { src: '../../assets/imgs/notice1.png', name: '西蒙', type: '4', vip: 2 }, { src: '../../assets/imgs/organ2.png', name: '哈哈', type: '5演员' }, { src: '../../assets/imgs/organ1.png', name: '西蒙', type: '6演员', vip: 2 }, { src: '../../assets/imgs/avatar.png', name: '西蒙', type: '7演员', vip: 2 }, { src: '../../assets/imgs/organ1.png', name: '西蒙', type: '8学生', vip: 2 }, { src: '../../assets/imgs/organ2.png', name: '哈哈', type: '9演员' }];
+  // filterList = [{title:'性别',pro:[{text:'男',pro_id:1},{text:'女',pro_id:0}]},{title:'类型',pro:[{text:'影视演员',pro_id:2},{text:'歌手',pro_id:3},{text:'模特',pro_id:4},{text:'网红',pro_id:5},{text:'儿童',pro_id:6},{text:'体育',pro_id:7},{text:'曲艺',pro_id:8},{text:'舞蹈演员',pro_id:9}]},{title:'年龄',pro:[{text:'15岁以下',pro_id:10},{text:'15-20',pro_id:11},{text:'21-25',pro_id:12}]},{title:'性别',pro:[{text:'男',pro_id:1},{text:'女',pro_id:0}]},{title:'类型',pro:[{text:'影视演员',pro_id:2},{text:'歌手',pro_id:3},{text:'模特',pro_id:4},{text:'网红',pro_id:5},{text:'儿童',pro_id:6},{text:'体育',pro_id:7},{text:'曲艺',pro_id:8},{text:'舞蹈演员',pro_id:9}]},{title:'年龄',pro:[{text:'15岁以下',pro_id:10},{text:'15-20',pro_id:11},{text:'21-25',pro_id:12}]},{title:'性别',pro:[{text:'男',pro_id:1},{text:'女',pro_id:0}]},{title:'类型',pro:[{text:'影视演员',pro_id:2},{text:'歌手',pro_id:3},{text:'模特',pro_id:4},{text:'网红',pro_id:5},{text:'儿童',pro_id:6},{text:'体育',pro_id:7},{text:'曲艺',pro_id:8},{text:'舞蹈演员',pro_id:9}]},{title:'年龄',pro:[{text:'15岁以下',pro_id:10},{text:'15-20',pro_id:11},{text:'21-25',pro_id:12}]}];
+  filterList = [{ title: '年龄', pro: [{ text: '15岁以下', pro_id: 10 }, { text: '15-20', pro_id: 11 }, { text: '21-25', pro_id: 12 }] }, { title: '性别', pro: [{ text: '男', pro_id: 1 }, { text: '女', pro_id: 0 }] }, { title: '类型', pro: [{ text: '影视演员', pro_id: 2 }, { text: '歌手', pro_id: 3 }, { text: '模特', pro_id: 4 }, { text: '网红', pro_id: 5 }, { text: '儿童', pro_id: 6 }, { text: '体育', pro_id: 7 }, { text: '曲艺', pro_id: 8 }, { text: '舞蹈演员', pro_id: 9 }] }, { title: '年龄', pro: [{ text: '15岁以下', pro_id: 10 }, { text: '15-20', pro_id: 11 }, { text: '21-25', pro_id: 12 }] }];
+
+  proIndex = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cp: CommonProvider) {
+  }
+
+
+  ionViewWillEnter() {
+    this.getNode();
+  }
+  getNode() {
+    let parentNode = document.getElementById("container");
+    let childNodeArray: any = parentNode.getElementsByClassName("box");
+    let screenWidth = document.documentElement.clientWidth;
+    let childWidth = childNodeArray[0].offsetWidth;
+    let num = Math.floor(screenWidth / childWidth); //获得一排摆的个数 用Math.floor()转换为整数
+    parentNode.style.cssText = "width:" + childWidth * num + "px; margin:0 auto"; //固定container的宽并设置居中
+    this.setImagePosition(num, childNodeArray);
+  }
+  setImagePosition(num, childArray) {
+    var imgHeightArray = [];//定义数组用于存放所有图片的高度
+    for (var i = 0; i < childArray.length; i++) { //遍历所有图片
+      if (i < num) {
+        imgHeightArray[i] = childArray[i].offsetHeight; //取得第一排图片的高度
+      } else {
+        var minHeight = Math.min.apply(null, imgHeightArray); //获取第一排图片中高度最小的图片
+        var minIndex = this.getMinHeight(imgHeightArray, minHeight); //函数获得高度最小的图片的位置
+        childArray[i].style.position = "absolute"; //绝对定位图片
+        childArray[i].style.top = minHeight + "px"; //图片距顶部像素
+        childArray[i].style.left = childArray[minIndex].offsetLeft + "px"; //图片距左的像素
+        imgHeightArray[minIndex] = imgHeightArray[minIndex] + childArray[i].offsetHeight; //将最低高度的box的高度加上它下方的box高度
+      }
+    }
+  }
+
+  getMinHeight(imgHeightArray, minHeight) {
+    for (var i in imgHeightArray) {
+      if (imgHeightArray[i] == minHeight) { //循环所有数组的高度 让它等于最小图片的高度 返回i值
+        return i;
+      }
+    }
+  }
+//这里是借助ionic的上拉加载代替网页的滚动监听实现加载更多
+  // doInfinite(infiniteScroll) {
+  //   let parentNode = document.getElementById("container");
+  //   for (var i = 0; i < this.img_data.length; i++) {
+  //     let divNode = document.createElement("div"); //创建div节点
+  //     divNode.className = "box";//为节点添加box类名
+  //     parentNode.appendChild(divNode);//添加根元素
+  //     let subDivNode = document.createElement("div");//创建节点
+  //     subDivNode.className = "box_img";//为节点添加类名
+  //     divNode.appendChild(subDivNode);//添加根元素
+  //     var img = document.createElement("img");//创建节点
+  //     img.src = this.img_data[i].src;//图片加载路径
+  //     subDivNode.appendChild(img);//添加根元素
+  //   }
+  //   this.getNode();
+  //   setTimeout(() => { infiniteScroll.complete() }, 1000);
+  // }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ArtistPage');
+    this.items[this.tabs] = this.artistList;
+  }
+
+  // 确定筛选
+  confirm() {
+    this.filter = !1;
+  }
+  // 取消筛选
+  close() {
+    this.filter = !1;
+  }
+  // 打开筛选
+  filterShow() {
+    this.filter = !0;
+  }
+  // 选择筛选属性
+  choosePro(i, j) {
+    this.proIndex[i] = j;
+    console.log('i:', i, '----j:', j, 'index:', this.proIndex);
+  }
+
+  changeSeg() {
+    console.log(this.tabs, 'this.tabs')
+    if (this.tabs == 1) {
+      this.filter = !0;
+    } else {
+      this.filter = !1;
+    }
+    this.items[this.tabs] = this.artistList;
+    // 0 == this.page[this.tabs] && this.doInfinite();
+    // this.infiniteScroll.enable(this.infiniteScrollState[this.tabs]);
+  }
+  doInfinite() {
+    console.log('上拉加载');
+    this.infiniteScroll.enable(false);
+  }
+}

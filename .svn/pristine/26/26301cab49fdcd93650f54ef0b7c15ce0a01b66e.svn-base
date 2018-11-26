@@ -1,0 +1,35 @@
+import { Injectable } from '@angular/core';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+
+@Injectable()
+export class CommonProvider {
+    navCtrl;
+    constructor(
+        public appCtrl: App) { }
+    // 跳转页面
+    goto(params) {
+        if (!this.navCtrl)
+            this.setActiveNavCtrl();
+        if (typeof params === 'string')
+            params = { view: params };
+
+        if (params.data) {
+            params = Object.assign(params, params.data);
+            delete params.data;
+        }
+        if (params.view) {
+            if (this.navCtrl.push) {
+                this.navCtrl.push(params.view, params);
+            }
+        }
+    }
+    //当切换tab的时候 重新设置下navCtrl 虽然都是设置的getActiveNavs()[0] 实际表示的是当前tab的navCtrl
+    setActiveNavCtrl(navCtrl = null, delay = 0) {
+        if (delay)
+            setTimeout(() => {
+                this.navCtrl = navCtrl ? navCtrl : this.appCtrl.getActiveNavs()[0];
+            }, delay);
+        else
+            this.navCtrl = navCtrl ? navCtrl : this.appCtrl.getActiveNavs()[0];
+    }
+}

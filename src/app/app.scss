@@ -1,0 +1,305 @@
+@font-face {
+    font-family: 'iconfont';  /* project id 903522 */
+    src: url('//at.alicdn.com/t/font_903522_cqnbwram9ss.eot');
+    src: url('//at.alicdn.com/t/font_903522_cqnbwram9ss.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_903522_cqnbwram9ss.woff') format('woff'),
+    url('//at.alicdn.com/t/font_903522_cqnbwram9ss.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_903522_cqnbwram9ss.svg#iconfont') format('svg');
+  }
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:1.8rem;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-blank:before{content: '\e607';} //空白
+.icon-upload-r:before{content: '\e68d';} //上传 圆
+.icon-upload-s:before{content: '\e603';} //上传 方
+
+.icon-major:before{content: '\e664';} //专业证书
+.icon-grade:before{content: '\e665';} //毕业证书
+.icon-art:before{content: '\e604';} //演艺经历
+
+// 我的介绍
+.icon-date:before{content: '\e6b2';} //档期
+.icon-album:before{content: '\e623';} //相册
+.icon-video:before{content: '\e634';} //视频
+.icon-modify:before{content: '\e62f';} //修改
+
+// 艺人详情
+.icon-card:before{content: '\e638';} //个人信息
+.icon-brief:before{content: '\e631';} //个人简介
+
+
+//菜单
+.icon-work:before{content: '\ea36';} //工作状态
+.icon-intro:before{content: '\e720';} //我的介绍
+.icon-letter:before{content: '\e67b';} //我的私信
+.icon-bell:before{content: '\e633';} //我的私信-铃铛
+
+.icon-demand:before{content: '\e636';} //我发布的需求
+.icon-identity:before{content: '\eb63';} //艺人认证
+.icon-collect:before{content: '\e606';} //我的收藏
+.icon-set:before{content: '\e608';} //我的设置
+// 诉讼支持
+.icon-lawyer:before{content: '\e601';} //律师团队
+.icon-case:before{content: '\e619';} //经典案例
+
+.icon-artist:before{content: '\e68a';} //艺人
+
+.icon-time:before{content: '\e69f';}//视频时长
+// 个人中心
+.artist-center {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    .avatar {
+        margin-top: 4rem;
+        text-align: center;
+        img {
+            width: 8rem;
+            height:8rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        p {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+        span {
+            display: inline-block;
+            width: 1.8rem;
+            height: 1.8rem;
+            line-height: 1.8rem;
+            font-size: 1.2rem;
+            margin-left: .5rrem;
+            text-align: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url(../assets/icon/vip_bg.png);
+            vertical-align: middle;
+        }
+    }
+    ion-list {
+        color: #fff;
+        font-size: 1.5rem;
+        margin-bottom: 1.8rem;
+        font-weight: 600;
+        ion-icon {
+            font-weight: 600;
+            margin: 0 .8rem 0 2rem;
+        }
+    }
+}
+
+.head-bg {
+    width: 100%;
+    filter: blur(5px);
+}
+.bg-cover {
+   position: absolute;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0,0,0,0.2);
+}
+// 无记录
+.blank {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #999;
+    min-height: 16rem;
+    ion-icon {
+        font-size: 10rem;
+    }
+}
+// 筛选弹框
+.filter-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: transparent;
+    .filter-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+    }
+    .filter {
+        width: 60%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: #fff;
+        padding: .5rem .5rem  44px .5rem;
+        overflow: scroll;
+        p:first-child {
+            color: #999;
+        }
+        .options {
+            padding: .5rem 0;
+            color: #333;
+            p:first-child {
+                color: #333;
+                margin-bottom: .5rem;
+            }
+            .option {
+                border-radius: .3rem;
+                overflow: hidden;
+                float: left;
+                width:30%;
+                line-height: 2.4rem;
+                font-size: 1.2rem;
+                background-color: #e9e9e9;
+                text-align: center;
+                margin: 0% 4% 4% 0;
+            }
+            .option:nth-child(3n+1) {
+                margin-right: 0;
+            }
+        }
+        .filter-active {
+            color: #fff;
+            background: -webkit-linear-gradient(left, #49afa4 , #14666e); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(right, #49afa4, #14666e); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(right, #49afa4, #14666e); /* Firefox 3.6 - 15 */
+            background: linear-gradient(to right, #49afa4 , #14666e); /* 标准的语法 */
+        }
+        .filter-btn {
+            display: flex;
+            button {
+                flex: 1;
+                margin: 1rem;
+                height: 100%;
+            }
+        }
+    }
+}
+// 头部
+ion-header {
+    .toolbar-ios-change .toolbar-background-ios {
+        background: -webkit-linear-gradient(left, #49afa4 , #14666e); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(right, #49afa4, #14666e); /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(right, #49afa4, #14666e); /* Firefox 3.6 - 15 */
+        background: linear-gradient(to right, #49afa4 , #14666e); /* 标准的语法 */
+    }
+    .toolbar-ios-change2 .toolbar-background-ios {
+        background: -webkit-linear-gradient(left top, #49afa4 , #14666e); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(bottom right, #49afa4, #14666e); /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(bottom right, #49afa4, #14666e); /* Firefox 3.6 - 15 */
+        background: linear-gradient(to bottom right, #49afa4 , #14666e); /* 标准的语法（必须放在最后） */
+    }
+    .avatar {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: transparent;
+        border-radius: 50%;
+        float: left;
+        margin: 0 .2rem;
+        object-fit: cover;
+    }
+}
+// 透明头部
+.transheader {
+    position: relative;
+    > img {
+      width: 100%;
+      display: block;
+    }
+    .toolbar-title-ios {
+      color: rgba(0, 0, 0, 0);
+    }
+    .toolbar-background-ios {
+      background-color: transparent;
+    }
+    .header-ios .toolbar-background-ios {
+      border-color: rgba(0, 0, 0, 0);
+    }
+    .bar-button-default-ios, .bar-button-default-ios:hover:not(.disable-hover) {
+      color: white;
+    }
+  }
+  
+  // 让transheader下的statusbar-padding生效
+  .ios .header .statusbar-padding:first-child {
+    padding-top: calc(20px + 4px);
+    padding-top: calc(constant(safe-area-inset-top) + 4px);
+    padding-top: calc(env(safe-area-inset-top) + 4px);
+    min-height: calc(44px + 20px);
+    min-height: calc(44px + constant(safe-area-inset-top));
+    min-height: calc(44px + env(safe-area-inset-top));
+  }
+//   切换栏
+.segment-md .segment-button {
+    color: #333;
+}
+.segment-md .segment-button.activated,
+.segment-md .segment-button.segment-activated {
+    color: #14666e;
+    border-color:#14666e;
+}
+//   底部按钮
+  ion-footer {
+    padding: 0 2rem;
+    .button-ios-change {
+        width: 100%;
+        border-radius: 2.4rem;
+    }
+}
+/* 清除浮动  */
+.clearfix::after,.clearfix::before{
+    content:"";
+    height:0;
+    line-height:0;
+    display:block;
+    clear:both;
+    visibilty: hidden;
+  }
+  
+  .clearfix{
+    zoom:1;
+  }
+p {
+    margin: 0;
+}
+// 按钮背景色
+.button-ios-change {
+    height: 100%;
+    padding: 0 1em!important;
+    line-height: 2.4rem;
+    background: -webkit-linear-gradient(left, #49afa4 , #14666e); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #49afa4, #14666e); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #49afa4, #14666e); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #49afa4 , #14666e); /* 标准的语法 */
+}
+// 头部左侧登录按钮
+.login-btn {
+    color: #fff;
+    font-size: 1.6rem;
+    padding: 0 .3em;
+}
+// 我的需求box
+.organ-box {
+    position: relative;
+    
+    .del-btn {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        color: #999;
+        font-size: 2rem;
+        z-index: 999;
+    }
+}
+ 

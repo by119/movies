@@ -1,0 +1,106 @@
+page-demand-upload {
+    .scroll-content {
+        background-color: #fafafa;
+    }
+
+    .item-ios.item-block .item-inner {
+        border: unset;
+    }
+    .list-ios {
+        margin: 0;
+    }
+    .logistics{
+        font-size: 1.5rem;
+    }
+    .label-ios{
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+    .con-all{
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 0.2rem;
+        .con-all-content{
+            width: 100%;
+            background: #fff;
+            overflow: hidden;
+            .con-all-title{
+                float: left;
+                font-size: 1.5rem;
+                font-weight: 600;
+            }
+            .con-all-input{
+                width: 65%;
+                float: right;
+                text-align: right;
+                border: none;
+                font-size: 1.3rem;
+            }
+            .con-all-title1{
+                width: 100%;
+            }
+            .upload{
+                overflow: hidden;
+                width: 100%;
+                .icon-upload-s{
+                    font-size: 8rem;
+                    margin: 2rem;
+                    color: #EAEAEA;
+                    font-weight: 300
+                }
+                .upload-ti{
+                    float: right;
+                    font-size: 1rem;
+                    color: #4BAE9C;
+                    line-height: 10rem;
+                }
+                .tian{
+                    font-size: 2.5rem;
+                }
+                .upload-title{
+                    color: #4BAE9C;
+                    font-size: 1.5rem;
+                }
+            
+            }
+            .upload1{
+                overflow: hidden;
+                width: 100%;
+               
+                margin-top: 1rem;
+                display: flex;
+                justify-content:center;
+                align-items:center;
+                .tian{
+                    font-size: 3rem;
+                    color: #EAEAEA;
+                    margin-top: 1rem;
+                }
+                .upload-title{
+                    color: #4BAE9C;
+                    font-size: 1.2rem;
+                    margin-left: 1rem;
+                    margin-top: 1rem                }
+            
+            }
+            .con-text{
+                margin-top: 1rem;
+                width: 100%;
+                height: 10rem;
+                background: #F9F9F9;
+                border: none;
+                padding-left: 1rem;
+                padding-top: 1rem;
+                // color: #C2C2C2;
+            }
+            
+        }
+    }
+
+
+
+
+
+
+    
+}

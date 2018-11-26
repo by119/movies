@@ -1,0 +1,53 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+/**
+ * Generated class for the MoreTagPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({
+  name:'more-tag'
+})
+@Component({
+  selector: 'page-more-tag',
+  templateUrl: 'more-tag.html',
+})
+export class MoreTagPage {
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cp:CommonProvider
+  ) {
+  }
+  monthState: any = [!1, !1, !1, !1, !1, !1];
+  experience: any = [[], [], [], [], [], []];
+  monthList = [];
+
+  ionViewDidLoad() {
+    console.log(this.monthState,'这是耕读偶的标签选中')
+    this.cp.getData("areist_type/getlist", {
+
+    }).then((res: any) => {
+      this.monthList = res.data;
+      let data = res.data;
+      for (let i = 0; i < data.length; i++) {
+        this.monthList[i].id = data[i][0];
+        // this.monthList[i].val = data[i][1];
+        // let state = data[i][2] ? 1 : 0;
+        // this.experience[i] = [data[i][1], state];
+        this.monthState[i] = data[i][1];
+        console.log(this.monthState[i],'kkkkkkk')
+      }
+    })
+  }
+
+  moreTagBtn(){
+    console.log(this.monthState,'nnnnnnnnn')
+  }
+
+}
+ 

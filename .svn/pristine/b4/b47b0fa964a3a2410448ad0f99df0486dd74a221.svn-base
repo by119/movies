@@ -1,0 +1,15 @@
+page-legal {
+    .item-ios {
+        padding: 0;
+    }
+    .item-ios.item-block .item-inner {
+        padding: 0;
+        border: unset;
+    }
+    .label-ios {
+        margin: 0;
+    }
+    .list-ios {
+        margin-bottom: 1.5rem;
+    }
+}

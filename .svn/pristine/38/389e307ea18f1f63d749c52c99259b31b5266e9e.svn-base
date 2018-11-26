@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>艺人投递的作品</ion-title>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="pet" mode="md">
+      <ion-segment-button value="0">
+        综合排序
+      </ion-segment-button>
+      <ion-segment-button value="1">
+        筛选
+      </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content padding>
+    <div class="rank" [ngSwitch]="pet">
+        <!-- 综合排序 -->
+        <div *ngSwitchCase="0">
+            <works *ngFor="let item of videoList" lastPage='{{pageName}}' videoUrl="{{item.src}}" producerId="{{producerId}}" roleId="{{roleId}}" userId="{{item?.id}}"></works>
+        </div>
+        <!-- 筛选 -->
+        <div *ngSwitchCase="1">
+        </div>
+      </div>
+</ion-content>
+<ion-footer *ngIf="!roleId">
+    <button (click)="cp.goto({view:'demand-choose',id:producerId})" ion-button color="change">选取角色</button>
+</ion-footer>

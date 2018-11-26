@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>艺人投递的作品</ion-title>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="tabs" (ionChange)="changeSeg()" mode="md">
+    <ion-segment-button value="0">
+      综合排序
+    </ion-segment-button>
+    <ion-segment-button value="1" (click)="filterShow()">
+      筛选
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content padding>
+  <div id="container" *ngIf="items[tabs]&&items[tabs].length>0;else elseBlank">
+    <works *ngFor="let item of items[tabs]" lastPage='artist-works' videoUrl="{{item?.video}}" producerId="{{producerId}}"
+      roleId="{{roleId}}" userId="{{item?.id}}" uId="{{item?.user.id}}" [item]="item"></works>
+  </div>
+  <ng-template #elseBlank>
+    <div class="blank">
+      <ion-icon class="iconfont icon-blank"></ion-icon>
+      <p>亲，此处没有内容～</p>
+    </div>
+  </ng-template>
+  <ion-infinite-scroll (ionInfinite)="doInfinite()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-footer *ngIf="!roleId">
+  <button (click)="cp.goto({view:'demand-choose',id:producerId})" ion-button color="change">选取角色</button>
+</ion-footer>
+<!-- 筛选条件 -->
+<ion-item *ngIf="filter" class="filter-box">
+  <div class="filter-bg" (click)="close()"></div>
+  <div class="filter">
+    <p>筛选</p>
+    <div class="options clearfix">
+      <p>性别</p>
+      <div class="option">
+          <div (click)="choosePro(2,'男')" [ngClass]="{'filter-active':'男'==proIndex[2]}">男</div>
+      </div>
+      <div class="option">
+          <div (click)="choosePro(2,'女')" [ngClass]="{'filter-active':'女'==proIndex[2]}">女</div>
+      </div>
+    </div> 
+    <div class="options clearfix">
+      <p>年龄</p>
+      <div *ngFor="let item of ageList;" class="option">
+        <div (click)="choosePro(0,item?.id)" [ngClass]="{'filter-active':item?.id==proIndex[0]}">{{item?.name}}</div>
+      </div>
+    </div>  
+    <div class="options clearfix">
+      <p>类型</p>
+      <div *ngFor="let item of categoryList;" class="option">
+        <div (click)="choosePro(1,item?.id)" [ngClass]="{'filter-active':item?.id==proIndex[1]}">{{item?.name}}</div>
+      </div>
+    </div>     
+    <div class="filter-btn">
+      <button ion-button round color="change" (click)="close()">取消</button>
+      <button ion-button round color="change" (click)="confirm()">确定</button>
+    </div>
+  </div>
+</ion-item>

@@ -1,0 +1,63 @@
+import { Component, ViewChild, Input } from '@angular/core';
+import { IonicPage, NavController, NavParams, InfiniteScroll, Content } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+@IonicPage({ name: 'promo' })
+@Component({
+  selector: 'page-promo',
+  templateUrl: 'promo.html',
+})
+export class PromoPage {
+  @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll;
+  @ViewChild(Content) content: Content;
+  // @Input() notices = [{ src: '../../assets/imgs/notice1.png', text: '你好，先生们', people: 20,type:'网剧 现代' }, { src: '../../assets/imgs/notice2.png', text: '星路启程', people: 10,type:'网剧' }, { src: '../../assets/imgs/notice2.png', text: '星路启程', people: 10,type:'网剧' }];
+  // @Input() organs = [{src: '../../assets/imgs/organ1.png', title: '一克拉梦想', people: 20,type:'电视剧',tips:['eager','hot'],director:'布鲁斯',start_time:'2018/09/16' },{src: '../../assets/imgs/organ2.png', title: '三生三世 十里桃花', people: 2,type:'电视剧',tips:['hot'],director:'黛尔',start_time:'2018/12/16' } ];
+  pet = '1';
+
+  @Input() notices = [];
+  @Input() organs = [];
+
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cp:CommonProvider
+  ) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad PromoPage');
+    this.noticeList();    //通告
+    this.organsList();    //组训
+  }
+
+  // 通告
+  noticeList(){
+    this.cp.getData("annunciate/getList",{
+      p:1,
+      numPerPage:10,
+      is_completed:1,
+    }).then((res:any)=>{
+      this.notices = res.data;
+      console.log(res.data[0].annunciate_type.name,'这是项目推荐的通告')
+    })
+  }
+
+  //组训
+  organsList(){
+    this.cp.getData("annunciate/getList",{
+      p:1,
+      numPerPage:10,
+      is_completed:0,
+    }).then((res:any)=>{
+      this.organs = res.data;
+      console.log(res,'这是项目推荐的通告')
+    })
+  }
+
+
+  doInfinite() {
+    console.log('上拉加载');
+    this.infiniteScroll.enable(false);
+  }
+
+}

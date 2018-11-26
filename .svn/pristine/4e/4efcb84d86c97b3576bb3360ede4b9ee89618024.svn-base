@@ -1,0 +1,22 @@
+<div class="box artist-list">
+  <!-- 幕后团队 -->
+  <div *ngIf="lastPage=='behind'" class="box_img" (click)="cp.goto({view:'behind-detail',id:item?.id})">
+    <img src="{{item?.avatar}}" alt="">
+    <p>
+      <span>{{item?.name}}
+        <i *ngIf="item?.authentication">v</i>
+      </span>
+      <span>{{item?.annunciate_type_function?.name}}</span>
+    </p>
+  </div>
+  <!-- 艺人 -->
+  <div *ngIf="lastPage=='artist' || lastPage=='collect'" class="box_img" (click)="cp.goto({view:'artist-detail',id:item?.user_id,lastPage:lastPage})">
+    <img src="{{item?.cover_img}}" alt="">
+    <p>
+      <span>{{item?.user?.nickname}}
+        <i *ngIf="item?.authentication">v</i>
+      </span>
+      <span>{{item?.category[0]?.name}}</span>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>诉讼支持</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="banner">
+    <img src="{{legalList.cover_img}}" alt="">
+    <img class="legal-icon" src="{{legalList.avatar}}" alt="">
+  </div>
+  <div class="legal-info">
+    <p class="title">
+      {{legalList.name}}
+    </p>
+    <p class="intro">{{legalList.intro}}</p>
+  </div>
+  <ion-item>
+    <div class="lawyer-list">
+      <ion-icon class="iconfont icon-lawyer"></ion-icon>
+      <span>律师团队</span>
+      <ion-slides #artistDetilSilde spaceBetween="10" slidesPerView='2.5'>
+        <ion-slide *ngFor="let item of legalList.lawyer_team;let i=index;">
+          <ion-item>
+            <img src="{{item.avatar}}" alt="">
+            <h6>{{item.name}}</h6>
+            <p>{{item.intro}}</p>
+          </ion-item>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </ion-item>
+  <ion-item>
+    <div class="lawyer-list case-list">
+      <ion-icon class="iconfont icon-case"></ion-icon>
+      
+      <span>经典案例</span>
+      <ion-slides #artistDetilSilde spaceBetween="10" slidesPerView='1.7'>
+        <ion-slide *ngFor="let item of legalList.lawyer_classic_case;let i=index;">
+          <ion-item>
+            <img class="case-img" src="{{item.cover_img}}" alt="">
+            <h6>{{item.name}}</h6>
+          </ion-item>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </ion-item>
+
+</ion-content>

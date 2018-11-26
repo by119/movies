@@ -1,0 +1,31 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+/**
+ * Generated class for the StudioIdentityPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({
+  name:'studio-identity'
+})
+@Component({
+  selector: 'page-studio-identity',
+  templateUrl: 'studio-identity.html',
+})
+export class StudioIdentityPage {
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cp:CommonProvider
+  ) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad StudioIdentityPage');
+  }
+
+}

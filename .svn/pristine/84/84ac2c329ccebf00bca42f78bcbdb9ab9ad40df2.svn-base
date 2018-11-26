@@ -1,0 +1,39 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+/**
+ * Generated class for the MoreTagPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({
+  name:'more-tag'
+})
+@Component({
+  selector: 'page-more-tag',
+  templateUrl: 'more-tag.html',
+})
+export class MoreTagPage {
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cp:CommonProvider
+  ) {
+  }
+  monthState: any = [!1, !1, !1, !1, !1, !1];
+  experience: any = [[], [], [], [], [], []];
+  monthList = [];
+
+  ionViewDidLoad() {
+    this.cp.getData("areist_type/getlist", {
+
+    }).then((res: any) => {
+      this.monthList = res.data;
+    })
+  }
+
+}
+ 

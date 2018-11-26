@@ -1,0 +1,8 @@
+<ion-tabs>
+  <ion-tab [root]="tab1Root" tabUrlPath="tab1" tabIcon="tab0"></ion-tab>
+  <ion-tab [root]="tab2Root" tabUrlPath="tab2" tabIcon="tab1"></ion-tab>
+  <ion-tab [root]="tab3Root" tabUrlPath="tab3" tabIcon="tab2"></ion-tab>
+  <ion-tab [root]="tab4Root" tabUrlPath="tab4" tabIcon="tab3"></ion-tab>
+  <ion-tab [root]="tab5Root" tabUrlPath="tab5" tabIcon="tab4"></ion-tab>
+</ion-tabs>
+<span class="dl" *ngIf="cp.temp.dl && !cp.plt.is('cordova')" (click)="cp.goto({view:'download'})"> <img src="./assets/imgs/dl.png" /> </span>

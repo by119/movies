@@ -1,0 +1,78 @@
+import { Component,ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+/**
+ * Generated class for the SignupPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({
+  name:"signup"
+})
+@Component({
+  selector: 'page-signup',
+  templateUrl: 'signup.html',
+})
+export class SignupPage {
+  cardzElem: any;
+  cardzformElem: any;
+  isShowImg = true;
+  cardzPhotos = "";
+  cardfPhotos = "";
+  @ViewChild('form2') form2;
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cp:CommonProvider
+  ) {
+  }
+
+   // 上传报名视频
+   photoZShow = true;
+   cardzaddImg() {
+       this.cardzElem.click()
+   }
+   cardzuploadImg() {
+     this.cp.getData('upload/index', new FormData(this.cardzformElem)).then((result: any) => {
+       if (result.code != 0){
+         this.cp.toast(result.msg.indexOf('大小不符') > 0 ? '图片需小于5M' : result.msg);
+       } else {
+         this.cardzPhotos = this.cp.SITE_URL + result.data.name;
+       }
+       if(result.code == 0){
+         this.photoZShow = false;
+         this.isShowImg = true;
+       }
+     });
+     this.cardzElem.value = '';
+   }
+   cardzdeleteImg(item) {
+     this.cardzPhotos = "";
+   }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad SignupPage');
+    this.cardzformElem = this.form2.nativeElement;
+    this.cardzElem= this.cardzformElem.firstElementChild;
+
+    if(this.cardzPhotos == ""){
+      this.isShowImg = false;
+      this.photoZShow = true;
+    }else{
+      this.isShowImg = true;
+      this.photoZShow = false;
+    }
+  }
+
+  // 报名
+  signUp(){
+    this.cp.getData("",{
+
+    }).then((res:any) => {
+
+    })
+  }
+
+}

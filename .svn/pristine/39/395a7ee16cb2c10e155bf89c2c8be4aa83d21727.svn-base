@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>{{notice?.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <!-- <ion-header>
+    <ion-navbar>
+      <ion-title>{{notice?.name}}</ion-title>
+    </ion-navbar>
+  </ion-header> -->
+  <div class="notice-head">
+    <img src="{{notice?.cover_img}}" alt="" class="head-bg">
+    <div class="bg-cover"></div>
+    <ion-item class="head-info" padding>
+      <img class="clearfix" src="{{notice?.poster}}" alt="">
+      <div class="notice-info clearfix">
+        <p>导演：{{notice?.director}}</p>
+        <p>开机时间：{{notice?.begin_time}}</p>
+        <p>周期：{{notice?.cycle}}</p>
+        <p>地点：{{notice?.place}}</p>
+        <h4>共招募
+          <span>{{notice?.roles_count}}</span>人</h4>
+      </div>
+    </ion-item>
+  </div>
+  <div class="list-title" padding>
+    <ion-icon class="iconfont icon-artist"></ion-icon>
+    <span>选用艺人</span>
+  </div>
+  <div id="container" *ngIf="artistList&&artistList?.length>0;else elseBlank">
+    <people *ngFor="let item of artistList;let i=index" [item]="item" lastPage="artist"></people>
+  </div>
+  <ng-template #elseBlank>
+    <div class="blank">
+      <ion-icon class="iconfont icon-blank"></ion-icon>
+      <p>亲，此处没有内容～</p>
+    </div>
+  </ng-template>
+</ion-content>

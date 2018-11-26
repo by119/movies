@@ -1,0 +1,41 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+/**
+ * Generated class for the DemandDetailPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({ name: 'demand-detail' })
+@Component({
+  selector: 'page-demand-detail',
+  templateUrl: 'demand-detail.html',
+})
+export class DemandDetailPage {
+  title = '详情';
+  timeList:any=[]
+  headBg = 'https://t12.baidu.com/it/u=373943879,1801230783&fm=76';
+  notice = { lawyer_id: 1, name: '甲申祭', type: '电影', director: '布鲁斯', start_time: '2018/09/21', time: '60-90天', addr: '横店', num: 32, pic_url: '../../assets/imgs/lawyer1.png' };
+  xbName = '自行拍摄一端短视频来表现自己的演技,主题:xxx,xxx,xxx,三个主题可以随便选'
+  introduce = "分都分了快递公司她割破发爬爬服可怕个屁sfpaldf;afa;f酷酷跑松开;熟练度个fka[pfka[pfkap[fkap[爱奋斗卡皮肤考泡芙考试的防空炮奥付款破案付款破案发颇丰阿婆票房破啊哦啊打破爱上"
+  role = '分都分了快递公司她割破发爬爬服可怕个屁sfpaldf分都分了快递公司她割破发爬爬服可怕个屁sfpaldf分都分了快递公司她割破发爬爬服可怕个屁sfpaldf分都分了快递公司她割破发爬爬服可怕个屁sfpaldf分都分了快递公司她割破发爬爬服可怕个屁sfpaldf分都分了快递公司她割破发爬爬服可怕个屁sfpaldf分都分了快递公司她割破发爬爬服可怕个屁sfpaldf'
+  artistList = [{ src: '../../assets/imgs/avatar.png', name: '西蒙', type: '1', vip: 2 }, { src: '../../assets/imgs/notice2.png', name: '西蒙', type: '2', vip: 2 }, { src: '../../assets/imgs/organ1.png', name: '西蒙', type: '3', vip: 2 }, { src: '../../assets/imgs/notice1.png', name: '西蒙', type: '4', vip: 2 }, { src: '../../assets/imgs/organ2.png', name: '哈哈', type: '5演员' }, { src: '../../assets/imgs/organ1.png', name: '西蒙', type: '6演员', vip: 2 }, { src: '../../assets/imgs/avatar.png', name: '西蒙', type: '7演员', vip: 2 }, { src: '../../assets/imgs/organ1.png', name: '西蒙', type: '8学生', vip: 2 }, { src: '../../assets/imgs/organ2.png', name: '哈哈', type: '9演员' }];
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad DemandDetailPage');
+    this.timeList=['widha','das ','dasd','dew']
+  }
+  ionViewWillEnter() {
+    console.log('enter')
+  }
+  timeFn(){
+    console.log(2222)
+  }
+
+
+}

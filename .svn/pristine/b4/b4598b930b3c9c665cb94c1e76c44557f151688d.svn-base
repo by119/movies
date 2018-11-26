@@ -1,0 +1,9 @@
+<div class="works-list">
+  <ion-item class="works-head">
+    <img src="{{item?.user.avatar}}" alt="">
+    <span>{{item?.user.nickname}}</span>
+    <button *ngIf="roleId" item-end ion-button color="change" (click)="chooseArtist()">选用</button>
+  </ion-item>
+  <video-ctrl lastPage='{{pageName}}' videoUrl="{{videoUrl}}"></video-ctrl>
+  <div class="works_title">{{item?.intro}}</div>
+</div>

@@ -1,0 +1,22 @@
+.works-list {
+    .item-ios.item-block .item-inner {
+        border: unset;
+    }
+    .works-head {
+        img {
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+        span {
+            margin-left: 0.5rem;
+        }
+        button {
+            border-radius: 2.4rem;
+        }
+    }
+    .video-list {
+        margin-top: 0!important;
+    }
+}

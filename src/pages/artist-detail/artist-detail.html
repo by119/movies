@@ -1,0 +1,204 @@
+<!--
+  Generated template for the ArtistDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>艺人详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content color="change2">
+  <div class="head-box" padding>
+    <div class="head-info">
+      <img src="{{actionerInfo?.user?.avatar ? actionerInfo?.user?.avatar:'../../../../assets/imgs/avatar.png'}}" alt="" class="head-avatar">
+      <div class="collect" (click)="collect()" *ngIf="cp?.u?.type==1&&lastPage!='collect'">
+        <ion-icon *ngIf="isCollect" color="orange" name="ios-star-outline"></ion-icon>
+        <ion-icon *ngIf="!isCollect" color="orange" name="ios-star"></ion-icon>
+        <span>收藏</span>
+      </div>
+      <div class="head-content">
+        <h4>{{actionerInfo?.user?.nickname  || "未知"}}</h4>
+        <p>{{actionerInfo?.major || "未知"}}</p>
+        <ion-item>
+          <div class="intro-base">
+            <div class="intro-age">
+              <h3>{{actionerInfo?.age || "未知"}}</h3>
+              <p>age</p>
+            </div>
+            <div class="intro-age">
+              <h3>{{actionerInfo?.cm || "未知"}}</h3>
+              <p>cm</p>
+            </div>
+            <div class="intro-age">
+              <h3>{{actionerInfo?.weight || "未知"}}</h3>
+              <p>kg</p>
+            </div>
+          </div>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+  <ion-item>
+    <div class="detail-box">
+      <ion-segment [(ngModel)]="tabs" mode="md">
+        <ion-segment-button value="0">
+          简介
+        </ion-segment-button>
+        <ion-segment-button value="1" (click)="actorPhotoList()">
+          相册
+        </ion-segment-button>
+        <ion-segment-button value="2" (click)="videoLists()">
+          视频
+        </ion-segment-button>
+      </ion-segment>
+      <div class="detail-content" [ngSwitch]="tabs">
+        <!-- 简介 -->
+        <div *ngSwitchCase="0">
+          <div>
+            <ion-item>
+              <ion-icon class="iconfont icon-card"></ion-icon>
+              <span>个人信息</span>
+              <div class="people-info">
+                <div>
+                  <span>性别</span>
+                  <span>{{actionerInfo?.sex==0?"男":"女" || "未知"}}</span>
+                </div>
+                <div>
+                  <span>民族</span>
+                  <span>{{actionerInfo?.mation || "未知"}}</span>
+                </div>
+                <div>
+                  <span>常住地</span>
+                  <span>{{actionerInfo?.permanent_residence || "未知"}}</span>
+                </div>
+                <div>
+                  <span>星座</span>
+                  <span>{{actionerInfo?.constellation || "未知"}}</span>
+                </div>
+                <div>
+                  <span>毕业院校</span>
+                  <span>{{actionerInfo?.graduute_school || "未知"}}</span>
+                </div>
+                <div>
+                  <span>专业</span>
+                  <span>{{actionerInfo?.major || "未知"}}</span>
+                </div>
+                <div>
+                  <span>特长</span>
+                  <span>{{actionerInfo?.speciality || "未知"}}</span>
+                </div>
+                <div>
+                  <span>我的类型</span>
+                  <div>
+                    <span *ngFor="let item of actionerInfo?.category;let i=index;" [ngStyle]="{'background-color':bgCC[i]}">{{item?.name || "未知"}}</span>
+                  </div>
+                </div>
+                <div>
+                  <span>我的风格</span>
+                  <div>
+                    <span *ngFor="let item of actionerInfo?.style;let i=index;" [ngStyle]="{'background-color':bgCS[i]}">{{item?.name || "未知"}}</span>
+                  </div>
+                </div>
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-icon class="iconfont icon-brief"></ion-icon>
+              <span>个人简介</span>
+              <div class="people-brief">
+                <p>{{actionerInfo?.intro || "未知"}}</p>
+              </div>
+            </ion-item>
+            <ion-item *ngIf="introList&&introList?.length>0">
+              <ion-icon class="iconfont icon-work"></ion-icon>
+              <span>从业经历</span>
+              <!-- <span item-end style="font-size: 1.4rem;color:#999;">更多</span>
+              <ion-icon item-end name="ios-arrow-forward" style="color: #999;min-height:unset"></ion-icon> -->
+            </ion-item>
+            <ion-item *ngIf="introList&&introList?.length>0">
+              <div class="people-work">
+                <ion-slides #artistDetilSilde spaceBetween="10" slidesPerView='1.5'>
+                  <ion-slide *ngFor="let item of introList;let i=index;">
+                    <ion-item>
+                      <img class="clearfix" src="{{item?.pic}}" alt="">
+                      <div class="work-detail clearfix">
+                        <h4>{{item?.title}}</h4>
+                        <p>类型：{{item?.categorys?.name}}</p>
+                        <p>角色：{{item?.role}}</p>
+                        <p>导演：{{item?.director}}</p>
+                        <p>合作艺人：{{item?.collaborators}}</p>
+                      </div>
+                    </ion-item>
+                  </ion-slide>
+                </ion-slides>
+              </div>
+            </ion-item>
+            <ion-item>
+              <div class="work-date">
+                <ion-icon class="iconfont icon-date"></ion-icon>
+                <span>档期</span>
+                <div *ngIf="schedule!==''" class="date-box-null">
+                  <span *ngIf="schedule" style="color:#14666e;">有档期</span>
+                  <span *ngIf="!schedule" style="color:#999;">无档期</span>
+                </div>
+                <div *ngIf="schedule===''" class="date-box">
+                  <div class="data-list">
+                    <p>月份</p>
+                    <p>有无档期</p>
+                  </div>
+                  <div *ngFor="let item of dataList;" class="data-list">
+                    <p>{{item?.month}}</p>
+                    <p *ngIf="item?.grade==1" style="color:#14666e;">有</p>
+                    <p *ngIf="item?.grade==0" style="color:#999;">无</p>
+                  </div>
+                </div>
+              </div>
+            </ion-item>
+          </div>
+        </div>
+        <!-- 相册 -->
+        <div *ngSwitchCase="1">
+          <div class="collage-intro" *ngIf="artistImg&&artistImg?.length>0;else elseBlank">
+            <ion-item class="artist-detil">
+              <ion-slides #artistDetilSilde effect="coverflow" centeredSlides spaceBetween="20" initialSlide='1'
+                slidesPerView='1.7'>
+                <ion-slide class="artist-list" *ngFor="let list of artistImg;let i=index;" (click)="cp.goto({view:'album-detail',id:list?.id})">
+                  <ion-item>
+                    <!-- <img src="{{items}}" alt="" *ngFor="let items of artistImg[i].pics;"> -->
+                    <img src="{{list?.pics[0]}}" alt="" />
+                    <h6 class="artist-name">{{list?.title}}</h6>
+                    <p>
+                      <span style="font-size: 1.3rem;">共{{list?.count}}张</span>
+                    </p>
+                  </ion-item>
+                </ion-slide>
+              </ion-slides>
+            </ion-item>
+          </div>
+          <ng-template #elseBlank>
+            <div class="blank">
+              <ion-icon class="iconfont icon-blank"></ion-icon>
+              <p>亲，此处没有内容～！</p>
+            </div>
+          </ng-template>
+        </div>
+        <!-- 视频 -->
+        <div *ngSwitchCase="2">
+          <div class="video-box" *ngIf="videoList&&videoList?.length;else elseBlank" padding>
+            <video-ctrl *ngFor="let item of videoList" lastPage='artist-detail' videoUrl="{{item?.video}}"></video-ctrl>
+          </div>
+          <ng-template #elseBlank>
+            <div class="blank">
+              <ion-icon class="iconfont icon-blank"></ion-icon>
+              <p>亲，此处没有内容～！</p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <button (click)="contactTA()" ion-button color="change">联系TA</button>
+</ion-footer>

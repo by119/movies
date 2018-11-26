@@ -1,0 +1,10 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>我发布的需求</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <organ *ngFor="let item of needInfoList" [item]="item" lastPage="demand"></organ>
+</ion-content>

@@ -1,0 +1,9 @@
+<div class="works-list">
+  <ion-item class="works-head">
+    <img src="../../assets/imgs/avatar.png" alt="">
+    <span>秀芹大妹子</span>
+    <button item-end ion-button color="change">选用</button>
+  </ion-item>
+  <video-ctrl lastPage='{{pageName}}' videoUrl="{{videoUrl}}"></video-ctrl>
+  <div class="works_title">这是综合排序的标题</div>
+</div>

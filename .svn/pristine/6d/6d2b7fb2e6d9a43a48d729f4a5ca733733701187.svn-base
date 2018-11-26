@@ -1,0 +1,5 @@
+page-artist {
+    .scroll-content {
+        background-color: #fafafa;
+    }
+}

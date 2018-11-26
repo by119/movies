@@ -1,0 +1,30 @@
+.works-list {
+    margin-bottom: 1.2rem;
+    border-radius: 4px;
+    .item-ios.item-block .item-inner {
+        border: unset;
+    }
+    .works-head {
+        img {
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: .3rem;
+        }
+        button {
+            border-radius: 2.4rem;
+        }
+    }
+    .video-list {
+        margin-top: 0!important;
+        vg-player{
+            border-radius: 0 !important;
+        }
+    }
+    .works_title{
+        line-height: 3.5rem;
+        padding:0 1rem;
+        background:#fff;
+    }
+}

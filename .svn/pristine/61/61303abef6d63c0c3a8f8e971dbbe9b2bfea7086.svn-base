@@ -1,0 +1,24 @@
+import { Component, Input } from '@angular/core';
+import { CommonProvider } from "../../providers/common/common";
+
+
+/**
+ * Generated class for the NoticeComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+@Component({
+  selector: 'notice',
+  templateUrl: 'notice.html'
+})
+export class NoticeComponent {
+
+  text: string;
+  @Input('item') item;
+  constructor(public cp: CommonProvider) {
+    console.log('Hello NoticeComponent Component');
+    this.text = 'Hello World';
+  }
+
+}

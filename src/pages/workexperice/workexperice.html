@@ -1,0 +1,69 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>工作经历</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item class="con-all">
+      <ion-list class="con-all-content">
+          <div class="con-all-title">剧名</div>
+          <input type="text" class='con-all-input' placeholder="请输入剧名" [(ngModel)]="name">
+      </ion-list>
+  </ion-item>
+  <div class="logistics">
+      <ion-item>
+      <ion-label>类型</ion-label>
+      <ion-select placeholder="请选择类型" multiple="false" interface="action-sheet"
+          cancelText="取消" [(ngModel)]="ship">
+          <ion-option *ngFor="let item of typeList" [value]="item.id">{{item.name}}</ion-option>
+      </ion-select>
+      </ion-item>
+  </div>
+  <ion-item class="con-all">
+      <ion-list class="con-all-content">
+          <div class="con-all-title">导演</div>
+          <input type="text" class='con-all-input' placeholder="请输入导演" [(ngModel)]="dircator">
+      </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+        <div class="con-all-title">角色</div>
+        <input type="text" class='con-all-input' placeholder="请输入角色" [(ngModel)]="role">
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+      <ion-list class="con-all-content">
+          <div class="con-all-title">合作艺人</div>
+          <input type="text" class='con-all-input' placeholder="请输入合作艺人" [(ngModel)]="teamPeople">
+      </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+      <ion-list class="con-all-content">
+          <div class="con-all-title1">上传海报</div>
+          <div class="imgBox" style="width:100%;margin-right: 2%;">
+              <ion-row class="stylephotos">
+                  <ion-col col-6 col-sm-6 col-md-20 class="photo_container" *ngIf="isShowImg">
+                      <div class="photo" style="height:12rem;">
+                          <img [src]="cardzPhotos" [alt]="cardzPhotos" style="height:12rem;">
+                      </div>
+                  </ion-col>
+                  <ion-col col-6 col-sm-6 col-md-20 class="photo_container" align-items-center *ngIf="photoZShow">
+                      <div class="photo upload" (click)="cardzaddImg()" style="height:12rem;">
+                          <ion-icon name="md-camera"></ion-icon>
+                          <span>上传海报</span>
+                          <form action="" #form2>
+                              <input type="file" name="file" id="fileid" accept="image/*" (change)="cardzuploadImg($event)">
+                          </form>
+                      </div>
+                  </ion-col>
+              </ion-row>
+          </div>
+      </ion-list>
+  </ion-item>
+
+</ion-content>
+<ion-footer>
+  <button (click)="workBtn()" ion-button color="change">确认提交</button>
+</ion-footer>

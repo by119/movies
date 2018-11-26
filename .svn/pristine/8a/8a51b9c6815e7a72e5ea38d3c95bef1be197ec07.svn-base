@@ -1,0 +1,22 @@
+.video-list {
+    margin-top: 1rem;
+    position: relative;
+    ion-icon {
+        width: 1.8rem;
+        border-radius: 0 0.5rem 0 1.5rem;
+        color: #fff;
+        background-color: rgba(0,0,0,0.4);
+        position: absolute;
+        right: 0;
+        top: 0;
+        text-align: center;
+        z-index: 999;
+    }
+    vg-player {
+        border-radius: .5rem;
+        overflow: hidden;
+        video {
+            max-height: 16.5rem;
+        }
+    }
+}

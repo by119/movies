@@ -1,0 +1,18 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>标签</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="tag_box">
+    <ion-item *ngFor="let item of monthList;let i=index">
+      <ion-label>{{item.name}}</ion-label>
+      <ion-checkbox [(ngModel)]="monthState[i]" color="aqua" [checked]="monthState[i]"></ion-checkbox>
+    </ion-item>
+  </div>
+</ion-content>
+<ion-footer>
+  <button ion-button color="change" (click)="moreTagBtn()">确认提交</button>
+</ion-footer>

@@ -1,0 +1,54 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+
+@IonicPage({
+  name: 'artist-works',
+  segment: 'artist-works/:producer_id/:role_id'
+})
+@Component({
+  selector: 'page-artist-works',
+  templateUrl: 'artist-works.html',
+})
+export class ArtistWorksPage {
+  pet = '0';
+  pageName = 'artist-works';
+  producerId = null; //组训id
+  roleId = null;     //角色id
+  videoList = [];
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public cp: CommonProvider
+  ) {
+  }
+
+  ionViewDidLoad() {
+    console.log(this.navParams, 'artist-works1111');
+    this.producerId = this.navParams.get("producer_id")
+    this.roleId = this.navParams.get("role_id")
+    this.artistWorkList();     //艺人投递作品列表
+  }
+
+  // 艺人投递作品列表
+  artistWorkList() {
+    this.cp.getDataInfo("areist_delivery_woeks/getList", {
+      annunciate_id: this.producerId
+    }).then((res: any) => {
+      this.videoList = res.data;
+      console.log(res.data[0].user.nickname, '这是艺人投递的作品')
+    })
+  }
+
+  // 制片人选取艺人
+  chooseArist() {
+    this.cp.getDataInfo("annunciate_roles/choose", {
+      user_id: 1,
+      role_id: 3,
+      producer_id: this.navParams.get("producer_id")
+    }).then((res: any) => {
+      console.log(res, '制片人选取艺人2222')
+    })
+  }
+
+}

@@ -1,0 +1,92 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+/**
+ * Generated class for the CheckinPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({
+  name:'checkin'
+})
+@Component({
+  selector: 'page-checkin',
+  templateUrl: 'checkin.html',
+})
+export class CheckinPage {
+  
+  typeList = [{id:0,name:'男'},{id:1,name:'女'}];    //性别
+  name = "";     //姓名
+  sex = "";     //性别
+  age = "";     //年龄
+  cm = "";      //身高
+  weight = "";    //体重
+  nation = "";    //民族
+  address = "";   //常住地址
+  constellations = "";    //星座
+  graduateschool = "";    //毕业院校
+  major = "";    //专业
+  special = "";    //特长
+  information = "";     //个人简介
+  constellation = [
+    {id:1,name:"白羊座"},
+    {id:2,name:"金牛座"},
+    {id:3,name:"双子座"},
+    {id:4,name:"巨蟹座"},
+    {id:5,name:"狮子座"},
+    {id:6,name:"处女座"},
+    {id:7,name:"天平座"},
+    {id:8,name:"天蝎座"},
+    {id:9,name:"射手座"},
+    {id:10,name:"摩羯座"},
+    {id:11,name:"水瓶座"},
+    {id:12,name:"双鱼座"},
+  ];
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cp:CommonProvider
+  ) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad CheckinPage');
+    // this.typeList = [{id:0,name:'男'},{id:1,name:'女'}];
+    // this.constellation = [
+    //   {id:1,name:"白羊座"},
+    //   {id:2,name:"金牛座"},
+    //   {id:3,name:"双子座"},
+    //   {id:4,name:"巨蟹座"},
+    //   {id:5,name:"狮子座"},
+    //   {id:6,name:"处女座"},
+    //   {id:7,name:"天平座"},
+    //   {id:8,name:"天蝎座"},
+    //   {id:9,name:"射手座"},
+    //   {id:10,name:"摩羯座"},
+    //   {id:11,name:"水瓶座"},
+    //   {id:12,name:"双鱼座"},
+    // ]
+  }
+
+  // 完善资料
+  InformationEdit(){
+    this.cp.getData("user_profile/add",{
+      sex: this.sex,      //性别
+      age: this.age,      //年龄
+      graduute_school: this.graduateschool,     //毕业院校
+      major: this.major,      //专业
+      speciality: this.special,     //特长
+      cm: this.cm,      //身高
+      intro: this.information,    //个人简介
+      permanent_residence: this.address,    //常住地
+      weight: this.weight,     //体重
+      mation: this.nation,     //民族
+      constellation: this.constellations,    //星座
+    }).then((res:any) => {
+      console.log(res,'这是完善资料')
+    })
+  }
+
+}

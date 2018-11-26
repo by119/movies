@@ -1,0 +1,98 @@
+page-legal-suggest {
+    .scroll-content {
+        background-color: #fafafa;
+    }
+    .item-ios.item-block .item-inner {
+        padding: 0;
+        border: unset;
+    }
+    
+    .banner {
+        position: relative;
+        img {
+            width: 100%;
+            vertical-align: middle;
+        }
+        .legal-icon {
+            box-shadow: 0px 0px 4px #abaaaa;
+            width:6rem;
+            height: 6rem;
+            position: absolute;
+            left: 1rem;
+            bottom: -3rem;
+            border-radius: .5rem;
+            overflow: hidden;
+            text-align: center;
+            display: table-cell;
+            object-fit: cover;
+        }
+    }
+    .legal-info {
+        background-color: #fff;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
+        .title {
+            padding-left: 8rem;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.6rem;
+            line-height: 2.6rem;
+            padding-bottom: 1.5rem;
+        }        
+        .intro {
+            font-size: 1.4rem;
+            color: #666;
+            padding-bottom: 1rem;
+        }
+    }
+    .item-ios {
+        background-color: transparent;
+    }
+    .lawyer-list {        
+        padding: 1rem;
+        border-radius: .5rem;
+        overflow: hidden;
+        background-color: #fff;
+        ion-slides {
+            margin-top: 1rem;
+        }
+        ion-slide {            
+            box-shadow: 1px 0 2px #abaaaa;
+            border-radius: .5rem;
+            overflow: hidden;
+            padding-bottom: .5rem;
+            background-color: #fff;
+            .item-ios {
+                padding: 0;
+            }
+            .label-ios {
+                margin: 0;
+            }
+        }
+         h6,p {
+            text-align: center;
+            margin: 0;
+            line-height: 2rem;
+            color: #333;
+        }
+        p {
+            font-size: 1rem;
+            padding: 0 .5rem;
+        }
+    }
+    
+    .case-list {
+        ion-slide {
+            box-shadow: unset;
+        }
+        .case-img {
+            border-radius: .5rem;
+            overflow: hidden;
+            // height: 4rem;
+            // object-fit: cover;
+        }
+        h6 {
+            text-align-last: left;
+        }
+    }
+}

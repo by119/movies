@@ -1,0 +1,16 @@
+page-studio-introductions {
+    .studio_box{
+        width:100%;
+        height:auto;
+        overflow: hidden;
+        h1{
+            font-size: 1.8rem;
+            text-align: center;
+            margin-top: 0px !important;
+        }
+        p{
+            line-height: 2rem;
+            color:#555;
+        }
+    }
+}

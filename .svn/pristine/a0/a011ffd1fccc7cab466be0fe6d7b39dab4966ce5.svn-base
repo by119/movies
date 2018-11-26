@@ -1,0 +1,45 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+/**
+ * Generated class for the DemandPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({ name: 'demand' })
+@Component({
+  selector: 'page-demand',
+  templateUrl: 'demand.html',
+})
+export class DemandPage {
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cp:CommonProvider
+  ) {
+  }
+
+  needInfoList = [];     //我发布的需求列表
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad DemandPage');
+    this.myNeed();
+  }
+
+  // 我发布的需求
+  myNeed(){
+    console.log(1111)
+    this.cp.getData("annunciate/getList",{
+      producer_id:2
+    }).then((res:any) => {
+      this.needInfoList = res.data;
+      console.log(22222)
+      console.log(res,'这是我发布的需求')
+    })
+  }
+
+
+}

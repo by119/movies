@@ -1,0 +1,10 @@
+<ion-list class="notice-list" (click)="cp.goto({view:'notice-detail',id:item.id})">
+  <div class="tips" *ngIf="item?.people">
+    <p>{{item.people}}</p>
+    <p>人</p>
+  </div>
+  <img src="{{item.src}}" alt="">
+  <p>{{item.text}}
+    <span>{{item.type}}</span>
+  </p>
+</ion-list>

@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar color="change">
+        <ion-title>添加相册</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title">相册名</div>
+            <input type="text" class='con-all-input' placeholder="请输入相册名" [(ngModel)]="albumName">
+        </ion-list>
+    </ion-item>
+    <ion-item>
+        <div class="intro-album">
+            <div *ngIf="!isShowImg2" class="album-blank">还没有照片呢</div>
+            <div *ngIf="isShowImg2" class="album-box clearfix">
+                <div class="album-list" *ngFor="let item of photoImgs;let i=index;">
+                    <ion-icon name="ios-close" (click)="confirmDelPhoto(i)"></ion-icon>
+                    <img src="{{item}}" alt="">
+                </div>
+            </div>
+            <div class="add-more" (click)="addPhotoImg()">
+                <ion-icon class="iconfont icon-upload-r"></ion-icon>
+                <span>添加更多照片</span>
+                <form action="" #form2>
+                    <input type="file" name="file" id="fileid" accept="image/*" (change)="photoUploadImg($event)">
+                </form>
+            </div>
+        </div>
+    </ion-item>
+</ion-content>
+<ion-footer>
+    <button (click)="saveBtn()" ion-button color="change">保存</button>
+</ion-footer>

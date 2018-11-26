@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>基本资料</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">姓名</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的姓名" [(ngModel)]="name" />
+    </ion-list>
+  </ion-item>
+  <div class="logistics">
+    <ion-item>
+      <ion-label>性别</ion-label>
+      <ion-select placeholder="请选择类型" multiple="false" interface="action-sheet" cancelText="取消" [(ngModel)]="sex">
+        <ion-option *ngFor="let item of typeList" [value]="item.id">{{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">年龄</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的年龄" [(ngModel)]="age" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">身高（cm）</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的身高" [(ngModel)]="cm" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">体重（kg）</div>
+      <input type="text" class="con-all-input" placeholder="请输入你的体重" [(ngModel)]="weight" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">民族</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的民族" [(ngModel)]="nation" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">常住地</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的常住地" [(ngModel)]="address" />
+    </ion-list>
+  </ion-item>
+  <div class="logistics">
+    <ion-item>
+      <ion-label>星座</ion-label>
+      <ion-select placeholder="请选择星座" multiple="false" interface="action-sheet" cancelText="取消" [(ngModel)]="constellations">
+        <ion-option *ngFor="let item of constellation" [value]="item.id">
+          {{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">毕业院校</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的毕业院校" [(ngModel)]="graduateschool" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">专业</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的专业" [(ngModel)]="major" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">特长</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的特长" [(ngModel)]="special" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">我的类型</div>
+      <span (click)="cp.goto({ view: 'more-tag', checkinType: 1 })" class="tagmores">更多类型 ></span>
+    </ion-list>
+    <ion-list *ngIf="category&&category.length" class="checkin-type">
+      <span *ngFor="let item of category;let i=index;" [ngStyle]="{'background-color':bgCC[i]}">{{item?.name}}<ion-icon name="ios-close" (click)="delCategory(i)"></ion-icon></span>
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">我的风格</div>
+      <span (click)="cp.goto({ view: 'more-tag', checkinType: 2 })" class="tagmores">更多风格 ></span>
+    </ion-list>
+    <ion-list *ngIf="style&&style.length" class="checkin-type">
+      <span *ngFor="let item of style;let i=index;" [ngStyle]="{'background-color':bgCS[i]}">{{item?.name}}<ion-icon name="ios-close" (click)="delStyle(i)"></ion-icon></span>
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title1">个人简介</div>
+      <textarea placeholder="请在此处输入您的个人简介" class="con-text" [(ngModel)]="information"></textarea>
+    </ion-list>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <button (click)="InformationEdit()" ion-button color="change">
+    确认提交
+  </button>
+</ion-footer>

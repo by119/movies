@@ -1,0 +1,58 @@
+page-legal-mould {
+    .item-ios {
+        padding: 0;
+        background-color: transparent;
+    }
+    .item-ios.item-block .item-inner {
+        padding: 0;
+        border: unset;
+    }
+    .label-ios {
+        margin: 0;
+    }
+    .list-ios {
+        border-radius: 0.5rem;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        background-color: #fff;
+        padding: 1rem;
+    }
+    
+    .scroll-content {
+        background-color: #fafafa;
+    }
+    .mould-t {
+        // img {
+        //     width:25%;
+        //     min-height: 5rem;
+        //     object-fit: cover;
+        //     float: left;
+        // }
+        .mould-t-r {
+            float: left;
+            width: 65%;
+            // margin-left: 3%;
+            p:first-child {
+                color: #333;
+                font-size: 1.5rem;
+            }
+            p:not(:first-child) {
+                color: #666;
+                font-size: 1.4rem;
+                white-space: pre-wrap;
+            }
+        }
+    }
+    .mould-b {
+        margin-top: 1rem;
+        >span {
+            float: left;
+            color: #ff0000;
+            line-height: 2.5rem;
+        }
+        button {
+            float: right;
+        }
+    }
+
+}

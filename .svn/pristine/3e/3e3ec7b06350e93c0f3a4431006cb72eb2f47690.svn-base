@@ -1,0 +1,80 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>制片厂认证</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background:#fafafa;">
+    <div class="studio_box">
+        <div class="signUp_title">
+            <h1>制片厂名称</h1>
+            <input type="text" placeholder="点击此处输入制片厂名称" [(ngModel)]="studio_title">
+        </div>
+        <div class="signUp_title">
+            <h1>联系人</h1>
+            <input type="text" placeholder="点击此处输入联系人" [(ngModel)]="studio_name">
+        </div>
+        <div class="signUp_title">
+            <h1>联系人电话</h1>
+            <input type="text" placeholder="点击此处输入联系人电话" [(ngModel)]="studio_phone" type="number" maxlength="11">
+        </div>
+        <div class="signUp_title">
+            <h1>制片厂地址</h1>
+            <input type="text" placeholder="点击此处输入制片厂地址" [(ngModel)]="studio_address">
+        </div>
+        <ion-item class="con-all">
+            <ion-list class="con-all-content">
+                <div class="con-all-title1">上传公司执照</div>
+                <div class="imgBox" style="width:100%;margin-right: 2%;">
+                    <ion-row class="stylephotos">
+                        <ion-col col-6 col-sm-6 col-md-20 class="photo_container" *ngIf="isShowImg">
+                            <div class="photo" style="height:12rem;">
+                                <img [src]="cardzPhotos" [alt]="cardzPhotos" style="height:12rem;">
+                            </div>
+                        </ion-col>
+                        <ion-col col-6 col-sm-6 col-md-20 class="photo_container" align-items-center>
+                            <div class="photo upload" (click)="cardzaddImg()" style="height:12rem;">
+                                <ion-icon name="md-camera"></ion-icon>
+                                <span>上传公司执照</span>
+                                <form action="" #form2>
+                                    <input type="file" name="file" id="fileid" accept="image/*" (change)="cardzuploadImg($event)">
+                                </form>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-list>
+        </ion-item>
+        <ion-item class="con-all">
+            <ion-list class="con-all-content">
+                <div class="con-all-title1">上传公司logo</div>
+                <div class="imgBox" style="width:100%;margin-right: 2%;">
+                    <ion-row class="stylephotos">
+                        <ion-col col-6 col-sm-6 col-md-20 class="photo_container" *ngIf="isAShowImg">
+                            <div class="photo" style="height:12rem;">
+                                <img [src]="cardPhotos" [alt]="cardPhotos" style="height:12rem;">
+                            </div>
+                        </ion-col>
+                        <ion-col col-6 col-sm-6 col-md-20 class="photo_container" align-items-center>
+                            <div class="photo upload" (click)="cardaddImg()" style="height:12rem;">
+                                <ion-icon name="md-camera"></ion-icon>
+                                <span>上传公司logo</span>
+                                <form action="" #form3>
+                                    <input type="file" name="file" id="fileid" accept="image/*" (change)="carduploadImg($event)">
+                                </form>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-list>
+        </ion-item>
+        <div class="signUp_title">
+            <h1>制片厂介绍</h1>
+            <textarea name="" id="" cols="30" rows="10" [(ngModel)]="studio_content"></textarea>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <button ion-button color="change" (click)="studioClick()">{{editBtnTxt}}</button>
+</ion-footer>

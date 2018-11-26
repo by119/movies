@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>我的工作状态</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div *ngIf="organs&&organs?.length>0;else elseBlank">
+        <!-- <organ lastPage="my-organ" *ngFor="let item of organs" [item]="item"></organ> -->
+    </div>
+    <ng-template #elseBlank>
+      <div class="blank">
+        <ion-icon class="iconfont icon-blank"></ion-icon>
+        <p>亲，此处没有内容～</p>
+      </div>
+    </ng-template>
+</ion-content>

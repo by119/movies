@@ -1,0 +1,144 @@
+page-behind-detail {
+    .scroll-content {
+        background: -webkit-linear-gradient(#4aafa3, #14666e); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(#4aafa3, #14666e); /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(#4aafa3, #14666e); /* Firefox 3.6 - 15 */
+        background: linear-gradient(#4aafa3, #14666e); /* 标准的语法（必须放在最后） */
+    }
+    .scroll-content {
+        background-color: #fafafa;
+    }
+    .item-ios {
+        background-color: transparent;
+    }
+    .item-ios.item-block .item-inner {
+        border: unset;
+    }
+    .head-box {
+        padding-top: 10rem!important;
+        .head-info {
+            position: relative;
+            width: 100%;
+            background-color: #fff;
+            .head-avatar {
+                position: absolute;
+                top: -5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 8rem;
+                height: 8rem;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+            .head-content {
+                padding: 5rem 0 1rem 0;
+                h4 {
+                    color: #333;
+                    text-align: center;
+                    margin-bottom: 0;
+                }
+                p {
+                    color: #999;
+                    text-align: center;
+                }
+                
+            }
+        }
+        
+    }
+    .detail-box {
+        background-color: #fff;
+        // 简介
+        // 个人信息
+        .people-info {
+            margin-top: 1rem;
+            >div {
+                display: flex;
+                >span {
+                    flex: 5;
+                    font-size: 1.4rem;
+                    line-height: 2rem;
+                }
+                >span:first-child{
+                    flex: 2;
+                    color: #666;
+                }
+                div {
+                    flex: 5;
+                    height: 5rem;
+                    span {
+                        font-size: 1.4rem;
+                        line-height: 2rem;
+                        background-color: pink;
+                        padding: 0 1em;
+                        border-radius: 2rem;
+                        margin: 0 .5rem .5rem 0;
+                        float: left;
+                    }
+                }
+            }
+        }
+        // 个人简介
+        .people-brief {
+            p {
+                margin-top: 1rem;
+                white-space: normal;
+                font-size: 1.5rem;
+                line-height: 1.8rem;
+            }
+        }
+        // 经典案例
+        .people-work {
+            overflow: hidden;
+            ion-slide {            
+                box-shadow: 0px 0px 2px #abaaaa;
+                border-radius: .5rem;
+                overflow: hidden;
+                background-color: #fff;
+                .item-ios {
+                    padding: 0;
+                }
+                .label-ios {
+                    margin: 0;
+                    display: flex;
+                    flex-direction: row;   
+                }
+                img {
+                    width: 45%;
+                    float: left;
+                    object-fit: cover;
+                    height: 9rem;
+                }
+                .work-detail {
+                    width: 55%;
+                    float: left;
+                    padding: .5rem 0;
+                    position: relative;
+                    .del-btn {
+                        position: absolute;
+                        top: 0.6rem;
+                        right: 0;
+                        font-size: 1.6rem;
+                        color: #999;
+                    }
+                    h4,p {
+                        margin: 0;
+                        line-height: 2rem;
+                        overflow: hidden;
+                        text-overflow:ellipsis;
+                        white-space: nowrap;
+                    }
+                    h4 {
+                        padding: 0 1rem 0 .5rem;
+                        color: #333;
+                    }
+                    p {
+                        padding: 0 0 0 .5rem;
+                        color: #999;
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}

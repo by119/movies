@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>我的介绍</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="intro-head" *ngIf="actionerInfo">
+    <img class="head-bg" src="https://t12.baidu.com/it/u=373943879,1801230783&fm=76" alt="">
+    <ion-label class="my-data" (click)="cp.goto({view:'checkin'})">
+      <ion-icon color="aqua2" name="" class="iconfont icon-set"></ion-icon>
+      <span>基本资料</span>
+    </ion-label>
+    <img class="avatar" src="{{actionerInfo.user.avatar}}" alt="">
+    <ion-item class="intro-base-box">
+      <div class="intro-base">
+        <div class="intro-age">
+          <h3>{{actionerInfo.age}}</h3>
+          <p>age</p>
+        </div>
+        <div class="intro-age">
+          <h3>{{actionerInfo.cm}}</h3>
+          <p>cm</p>
+        </div>
+        <div class="intro-age">
+          <h3>{{actionerInfo.weight}}</h3>
+          <p>kg</p>
+        </div>
+      </div>
+    </ion-item>
+  </div>
+  <ion-item>
+    <div class="intro-work">
+      <ion-icon class="iconfont icon-work"></ion-icon>
+      <span>工作经历</span>
+      <ion-slides #artistDetilSilde spaceBetween="10" slidesPerView='1.5'>
+        <ion-slide *ngFor="let item of introList;let i=index;">
+          <ion-item>
+              <!-- https://yiren.fengsh.cn -->
+            <img class="clearfix" src="{{item.pic}}" alt="">
+            <div class="work-detail clearfix">
+              <ion-icon class="del-btn" name="ios-trash-outline" (click)="confirmDelWork()"></ion-icon>
+              <h4>{{item.title}}</h4>
+              <p>类型：{{item.categorys.name}}</p>
+              <p>角色：{{item.role}}</p>
+              <p>导演：{{item.director}}</p>
+              <p>合作艺人：{{item.collaborators}}</p>
+            </div>
+          </ion-item>
+        </ion-slide>
+      </ion-slides>
+      <div class="add-more" (click)="cp.goto({view:'workexperice'})">
+        <ion-icon class="iconfont icon-upload-r"></ion-icon>
+        <span>添加更多工作经历</span>
+      </div>
+    </div>
+  </ion-item>
+  <ion-item>
+    <div class="work-date">
+      <ion-icon class="iconfont icon-date"></ion-icon>
+      <span>档期</span>
+      <div class="date-modify" (click)="cp.goto({view:'date-modify'})">
+        <ion-icon class="iconfont icon-modify"></ion-icon>
+        <span>修改</span>
+      </div>
+      <div *ngIf="dataList[0].type==0" class="date-box-null">
+        <span *ngIf="dataList[0].state==0" style="color:#14666e;">有档期</span>
+        <span *ngIf="dataList[0].state==1" style="color:#999;">无档期</span>
+      </div>
+      <div *ngIf="dataList[0].type==1" class="date-box">
+        <div class="data-list">
+          <p>月份</p>
+          <p>有无档期</p>
+        </div>
+        <div *ngFor="let item of dataList[0].list;" class="data-list">
+          <p>{{item.month}}</p>
+          <p *ngIf="item.state==0" style="color:#14666e;">有</p>
+          <p *ngIf="item.state==1" style="color:#999;">无</p>
+        </div>
+      </div>
+    </div>
+  </ion-item>
+  <ion-item>
+    <div class="intro-album">
+      <ion-icon class="iconfont icon-album"></ion-icon>
+      <span>相册</span>
+      <div class="album-box clearfix">
+        <div class="album-list" *ngFor="let item of albumList;let i=index;">
+          <ion-icon name="ios-close" (click)="confirmDelAlbum(item.id)"></ion-icon>
+          <!-- *ngFor="let items of albumList[i].pics" -->
+          <!-- <img src="https://yiren.fengsh.cn{{item.pics[0]}}" alt=""> -->
+          <p>{{item.title}}</p>
+        </div>
+      </div>
+      <div class="add-more" (click)="addAlbum()">
+        <ion-icon class="iconfont icon-upload-r"></ion-icon>
+        <span>添加更多相册</span>
+      </div>
+    </div>
+  </ion-item>
+  <ion-item>
+    <div class="intro-video">
+      <ion-icon class="iconfont icon-video"></ion-icon>
+      <span>视频</span>
+      <div class="video-box">
+        <div class="video-list">
+            <video-ctrl *ngFor="let item of videoList" lastPage='{{pageName}}' videoUrl="https://yiren.fengsh.cn{{item.video}}"></video-ctrl>
+        </div>
+      </div>
+      <div class="add-more" (click)="addVideo()">
+        <ion-icon class="iconfont icon-upload-r"></ion-icon>
+        <span>添加更多视频</span>
+      </div>
+    </div>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <button (click)="uploadMyData()" ion-button color="change">确认提交</button>
+</ion-footer>

@@ -1,0 +1,157 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>基本资料</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">姓名</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的姓名" maxlength="10" [(ngModel)]="name" />
+    </ion-list>
+  </ion-item>
+  <div class="logistics">
+    <ion-item>
+      <ion-label>性别</ion-label>
+      <ion-select placeholder="请选择类型" multiple="false" interface="action-sheet" cancelText="取消" [(ngModel)]="sex">
+        <ion-option *ngFor="let item of typeList" [value]="item.id">{{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">年龄</div>
+      <input type="number" class="con-all-input" placeholder="请输入您的年龄" [(ngModel)]="age" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">身高（cm）</div>
+      <input type="number" class="con-all-input" placeholder="请输入您的身高" [(ngModel)]="cm" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">体重（kg）</div>
+      <input type="number" class="con-all-input" placeholder="请输入你的体重" [(ngModel)]="weight" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">民族</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的民族" [(ngModel)]="nation" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">常住地</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的常住地" [(ngModel)]="address" />
+    </ion-list>
+  </ion-item>
+  <div class="logistics">
+    <ion-item>
+      <ion-label>星座</ion-label>
+      <ion-select placeholder="请选择星座" multiple="false" interface="action-sheet" cancelText="取消" [(ngModel)]="constellations">
+        <ion-option *ngFor="let item of constellation" [value]="item.id">
+          {{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">毕业院校</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的毕业院校" [(ngModel)]="graduateschool" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">专业</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的专业" maxlength="15"  [(ngModel)]="major" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">特长</div>
+      <input type="text" class="con-all-input" placeholder="请输入您的特长" [(ngModel)]="special" />
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">我的类型</div>
+      <span (click)="cp.goto({ view: 'more-tag', checkinType: 1 })" class="tagmores">更多类型 ></span>
+    </ion-list>
+    <ion-list *ngIf="category&&category.length" class="checkin-type">
+      <span *ngFor="let item of category;let i=index;" [ngStyle]="{'background-color':bgCC[i]}">{{item?.name}}<ion-icon name="ios-close" (click)="delCategory(i)"></ion-icon></span>
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title">我的风格</div>
+      <span (click)="cp.goto({ view: 'more-tag', checkinType: 2 })" class="tagmores">更多风格 ></span>
+    </ion-list>
+    <ion-list *ngIf="style&&style.length" class="checkin-type">
+      <span *ngFor="let item of style;let i=index;" [ngStyle]="{'background-color':bgCS[i]}">{{item?.name}}<ion-icon name="ios-close" (click)="delStyle(i)"></ion-icon></span>
+    </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+      <ion-list class="con-all-content">
+          <div class="con-all-title1">上传头像</div>
+          <div class="imgBox" style="width:100%;">
+              <ion-row class="stylephotos">
+                      <!-- *ngIf="isFanShowImg" -->
+                  <ion-col col-6 col-sm-6 col-md-20 class="photo_container" *ngIf="isFanShowImg">
+                      <div class="photo" style="height:12rem;">
+                          <!-- <a class="close" (click)="styledeleteImg(stylephotos)"></a> -->
+                          <img [src]="cardfPhotos" [alt]="cardfPhotos" style="height:12rem;">
+                      </div>
+                  </ion-col>
+                  <ion-col col-6 col-sm-6 col-md-20 class="photo_container" align-items-center>
+                      <div class="photo upload" (click)="cardfaddImg()" style="height:12rem;">
+                          <ion-icon name="md-camera"></ion-icon>
+                          <span>上传照片</span>
+                          <form action="" #form3>
+                              <input type="file" name="file" id="fileid" accept="image/*" (change)="cardfuploadImg($event)">
+                          </form>
+                      </div>
+                  </ion-col>
+              </ion-row>
+          </div>
+      </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+      <ion-list class="con-all-content">
+          <div class="con-all-title1">上传个人美图</div>
+          <div class="imgBox" style="width:100%;">
+              <ion-row class="stylephotos">
+                      <!-- *ngIf="isPShowImg" -->
+                  <ion-col col-6 col-sm-6 col-md-20 class="photo_container" *ngIf="isPShowImg">
+                      <div class="photo" style="height:12rem;">
+                          <!-- <a class="close" (click)="styledeleteImg(stylephotos)"></a> -->
+                          <img [src]="cardpPhotos" [alt]="cardpPhotos" style="height:12rem;">
+                      </div>
+                  </ion-col>
+                  <ion-col col-6 col-sm-6 col-md-20 class="photo_container" align-items-center>
+                      <div class="photo upload" (click)="cardpaddImg()" style="height:12rem;">
+                          <ion-icon name="md-camera"></ion-icon>
+                          <span>上传照片</span>
+                          <form action="" #form4>
+                              <input type="file" name="file" id="fileid" accept="image/*" (change)="cardpuploadImg($event)">
+                          </form>
+                      </div>
+                  </ion-col>
+              </ion-row>
+          </div>
+      </ion-list>
+  </ion-item>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+      <div class="con-all-title1">个人简介</div>
+      <textarea placeholder="请在此处输入您的个人简介" class="con-text" [(ngModel)]="information"></textarea>
+    </ion-list>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <button (click)="InformationEdit()" ion-button color="change">
+    {{editBtnTxt}}
+  </button>
+</ion-footer>

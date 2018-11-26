@@ -1,0 +1,123 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>艺人认证</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="evaluateBox clearfix">
+    <div class="imgBox">
+      <ion-card-title>相关专业证书</ion-card-title>
+      <ion-row class="stylephotos">
+        <ion-col col-4 col-sm-4 col-md-20 class="photo_container" *ngFor="let photo of photos;">
+          <div class="photo" style="height:8rem;">
+            <!-- <a class="close" (click)="deleteImg(photo)"></a> -->
+            <img [src]="photo" [alt]="photo" style="height:8rem;">
+          </div>
+        </ion-col>
+        <ion-col col-12 col-sm-12 col-md-20 class="photo_container" align-items-center *ngIf="phptoShow">
+          <div class="photo upload" (click)="addImg()" style="height:15rem;">
+            <ion-icon name="md-camera"></ion-icon>
+            <span>上传相关专业证书</span>
+            <form action="" #form>
+              <input type="file" name="file" accept="image/*" (change)="uploadImg($event)">
+            </form>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+        <div class="con-all-title1">专业院校毕业证书</div>
+        <div class="imgBox" style="width:100%;margin-right: 2%;">
+            <ion-row class="stylephotos">
+                <ion-col col-12 col-sm-12 col-md-20 class="photo_container" *ngIf="isShowImg">
+                    <div class="photo" style="height:15rem;">
+                        <img [src]="cardzPhotos" [alt]="cardzPhotos" style="height:15rem;">
+                    </div>
+                </ion-col>
+                <ion-col col-12 col-sm-12 col-md-20 class="photo_container" align-items-center *ngIf="photoZShow">
+                    <div class="photo upload" (click)="cardzaddImg()" style="height:15rem;">
+                        <ion-icon name="md-camera"></ion-icon>
+                        <span>上传毕业证书</span>
+                        <form action="" #form2>
+                            <input type="file" name="file" id="fileid" accept="image/*" (change)="cardzuploadImg($event)">
+                        </form>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-list>
+  </ion-item>
+  <div class="indetity_actor">
+    <div class="indetity_mid">
+      <em>演艺经历</em>
+      <div class="indetity_list"  *ngFor="let list of rolesTextArr;let i=index;">
+        <div>《{{list?.title}}》  饰  
+          <span>{{list?.role}}</span>
+          <ion-icon name="ios-trash-outline" class="indetity_delete"></ion-icon>
+        </div>
+        <p>{{list?.intro}}</p>
+      </div>
+      <div class="upload1" (click)="addRole()">
+          <ion-icon class="iconfont icon-upload-s tian"></ion-icon>
+          <span class="upload-title">点击添加更多的角色</span>
+      </div>
+    </div>
+  </div>
+  <ion-item class="con-all">
+    <ion-list class="con-all-content">
+        <div class="con-all-title1">表演视频</div>
+        <div class="imgBox" style="width:100%;margin-right: 2%;">
+            <ion-row class="stylephotos">
+                <ion-col col-12 col-sm-12 col-md-20 class="photo_container" *ngIf="isShowvideo">
+                    <div class="photo" style="height:15rem;">
+                        <!-- <img [src]="videoPhotos" [alt]="videoPhotos" style="height:15rem;"> -->
+                        <video-ctrl  videoUrl="{{videoPhotos}}"></video-ctrl>
+                    </div>
+                </ion-col>
+                <ion-col col-12 col-sm-12 col-md-20 class="photo_container" align-items-center *ngIf="videoShow">
+                    <div class="photo upload" (click)="videoaddImg()" style="height:15rem;">
+                        <ion-icon name="md-camera"></ion-icon>
+                        <span>点击上传视频</span>
+                        <form action="" #formVideo>
+                            <input type="file" name="file" id="fileid" accept="m4a,aac,avi,mov,asf,wmv,navi,3gp,mkv,flv,f4v,rmvb,webm,mp4/*" (change)="videouploadImg($event)">
+                        </form>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-list>
+  </ion-item>
+  <div class="identity_phone">客服电话：18302524154</div>
+</ion-content>
+<ion-footer>
+    <button ion-button color="change" style="line-height: 3rem;" (click)="identityClick()">确认提交</button>
+</ion-footer>
+
+<!-- 添加角色弹窗 -->
+
+<div class="addRole" *ngIf="addRoleInfo">
+    <div class="addRoleBox">
+        <div class="addRole_title">添加角色</div>
+        <ion-icon ios="ios-close" md="md-close" class="addRole_close" (click)="addRole()"></ion-icon>
+        <div class="addRole_content">
+            <div class="addrole_name">
+                <h3>标题：</h3>
+                <input type="text" placeholder="点击此处输入您的标题" [(ngModel)]="rolesTitle">
+            </div>
+            <div class="addrole_name">
+                <h3>角色姓名：</h3>
+                <input type="text" placeholder="点击此处输入您的姓名" [(ngModel)]="rolesName">
+            </div>
+            <div class="addrole_name">
+                <h3>角色内容：</h3>
+                <textarea [(ngModel)]="rolesText" name="" id="" cols="30" rows="10" placeholder="点击此处输入您的角色内容"></textarea>
+            </div>
+        </div>
+        <button class="addRole_Button" (click)="confirmAddRoles()">确认添加</button>
+    </div>
+</div>
+

@@ -1,0 +1,59 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>组训报名</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="signUp">
+    <ion-item class="signUp_title signup_title1">
+        <ion-label>选择报名角色</ion-label>
+        <ion-select interface="popover" [(ngModel)]="role" class="role_select" placeholder="请选择报名角色">
+            <ion-option *ngFor="let item of allRoleInfo;" value="{{item.id}}">{{item.role_name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <div class="signUp_title">
+        <h1>报名视频主题</h1>
+        <input type="text" placeholder="点击此处输入您的视频主题" [(ngModel)]="intro_title">
+    </div>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title1">报名视频上传</div>
+            <div class="imgBox" style="width:100%;margin-right: 2%;">
+                <ion-row class="stylephotos">
+                    <ion-col col-12 col-sm-12 col-md-20 class="photo_container" *ngIf="isShowImg">
+                        <div class="photo" style="height:15rem;">
+                                <!-- <video  id="singleVideo" preload="auto" controls>
+                                    <source src="{{cardzPhotos}}" type="video/mp4">
+                                </video> -->
+                            <video-ctrl lastPage='intro' videoUrl="{{cardzPhotos}}"></video-ctrl>
+                            <!-- <div class="video-list">
+                                <ion-icon name="ios-close" (click)="confirmDelVideo()"></ion-icon>
+                                <vg-player>
+                                    <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+                                        <source src="{{cardzPhotos}}" type="video/mp4">
+                                    </video>
+                                </vg-player>
+                            </div> -->
+                        </div>
+                    </ion-col>
+                    <!-- *ngIf="photoZShow" -->
+                    <ion-col col-12 col-sm-12 col-md-20 class="photo_container" align-items-center *ngIf="photoZShow">
+                        <div class="photo upload" (click)="cardzaddImg()" style="height:15rem;">
+                            <ion-icon name="md-camera"></ion-icon>
+                            <span>上传视频</span>
+                            <form action="" #form2>
+                                <input type="file" name="file" id="fileid" accept="m4a,aac,avi,mov,asf,wmv,navi,3gp,mkv,flv,f4v,rmvb,webm,mp4/*" (change)="cardzuploadImg($event)">
+                            </form>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </ion-list>
+    </ion-item>
+  </div>
+</ion-content>
+<ion-footer>
+    <button ion-button color="change" class="signupBtn" (click)="signUp()">确认提交</button>
+</ion-footer>

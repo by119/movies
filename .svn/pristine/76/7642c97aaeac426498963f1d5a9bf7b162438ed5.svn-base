@@ -1,0 +1,37 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {CommonProvider} from "../../providers/common/common";
+
+@IonicPage({
+  name: 'artist-works',
+  segment: 'artist-works/:title/:id'
+})
+@Component({
+  selector: 'page-artist-works',
+  templateUrl: 'artist-works.html',
+})
+export class ArtistWorksPage {
+  pet = '0';
+  pageName = 'artist-works';
+  videoList = [{ src: 'http://static.videogular.com/assets/videos/videogular.mp4' }, { src: 'http://static.videogular.com/assets/videos/videogular.mp4' }, { src: 'http://static.videogular.com/assets/videos/videogular.mp4' }];
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cp:CommonProvider
+  ) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ArtistWorksPage');
+    this.artistWorkList();     //艺人投递作品列表
+  }
+
+  // 艺人投递作品列表
+  artistWorkList(){
+    this.cp.getDataInfo("areist_delivery_woeks/getList",{
+      annunciate_id:this.navParams.get("id")
+    }).then((res:any) => {
+      console.log(res,'这是艺人投递的作品')
+    })
+  }
+}

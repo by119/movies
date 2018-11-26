@@ -1,0 +1,5 @@
+page-promo {
+    .scroll-content {
+        background-color: #fafafa;
+    }
+}

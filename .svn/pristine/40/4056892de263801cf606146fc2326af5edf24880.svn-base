@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>我的收藏</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div id="container" *ngIf="items&&items?.length>0;else elseBlank">
+    <div *ngIf="cp.u.type==1">
+        <div class="organ-box" *ngFor="let item of items;let i=index;">
+          <ion-icon item-end class="del-btn" name="ios-trash-outline" (click)="confirmDel(item?.id,i)"></ion-icon>
+          <people [item]="item" lastPage="collect"></people>
+        </div>
+    </div>
+    <div *ngIf="cp.u.type==2">
+      <div class="organ-box" *ngFor="let item of items;let i=index;">
+        <ion-icon item-end class="del-btn" name="ios-trash-outline" (click)="confirmDel(item?.annunciate?.id,i)"></ion-icon>
+        <organ [item]="item?.annunciate" lastPage="collect"></organ>
+      </div>
+    </div>
+  </div>
+  <ng-template #elseBlank>
+    <div class="blank">
+      <ion-icon class="iconfont icon-blank"></ion-icon>
+      <p>亲，此处没有内容～</p>
+    </div>
+  </ng-template>
+  <ion-infinite-scroll (ionInfinite)="doInfinite()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

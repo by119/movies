@@ -1,0 +1,10 @@
+page-artist {
+    .scroll-content {
+        background-color: #fafafa;
+    }
+    .artist-box {
+        -moz-column-count:2; /* Firefox */
+        -webkit-column-count:2; /* Safari 和 Chrome */
+        column-count:2;
+    }
+}

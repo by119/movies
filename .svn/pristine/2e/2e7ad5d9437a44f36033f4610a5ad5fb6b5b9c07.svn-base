@@ -1,0 +1,65 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+
+
+@IonicPage({ name: 'date-modify' })
+@Component({
+  selector: 'page-date-modify',
+  templateUrl: 'date-modify.html',
+})
+export class DateModifyPage {
+  date0 = false;
+  date1 = false;
+  monthListState = false;
+  monthState: any = [!1, !1, !1, !1, !1, !1];
+  experience: any = [[], [], [], [], [], []];
+  monthList = [{ month: '11', val: '1541001600' },
+  { month: '12', val: '1543593600' },
+  { month: '01', val: '1546272000' },
+  { month: '02', val: '1548950400' },
+  { month: '03', val: '1551369600' },
+  { month: '04', val: '1554048000' }];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cp: CommonProvider) { }
+  ionViewDidLoad() {
+    this.cp.getData("areist_morietheaterschedule/time", {}).then((res: any) => {
+      let data = res.data;
+      for (let i = 0; i < data.length; i++) {
+        this.monthList[i].month = data[i][0];
+        this.monthList[i].val = data[i][1];
+        let state = data[i][2] ? 1 : 0;
+        this.experience[i] = [data[i][1], state];
+        this.monthState[i] = data[i][2];
+      }
+    })
+  }
+  updateDateState(type) {
+    if (type == 0) {
+      this.date1 = this.date0 ? !this.date0 : false;
+      this.monthListState = !1;
+    }
+    if (type == 1) {
+      this.date0 = this.date1 ? !this.date1 : false;
+      this.monthListState = !0;
+    }
+  }
+  // 确认修改档期
+  confirm() {
+    if (!this.monthListState) {
+      for (let i = 0; i < this.experience.length; i++) {
+        this.experience[i][1] = 0;
+      }
+    } else {
+      for (let i = 0; i < this.experience.length; i++) {
+        let state = this.monthState[i] ? 1 : 0;
+        this.experience[i][1] = state;
+      }
+    }
+    // console.log(this.experience, '确认修改档期');
+    this.cp.getData("areist_morietheaterschedule/add", {
+      experience: this.experience
+    }).then((res: any) => {
+      this.cp.pop();
+    })
+  }
+}

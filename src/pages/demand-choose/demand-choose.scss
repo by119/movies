@@ -1,0 +1,106 @@
+page-demand-choose {
+    ion-header {
+        // position: fixed;
+        // top: 0;
+        .toolbar-title-ios,
+        .back-button.show-back-button {
+            color: #fff;
+        }
+    }
+    // .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+    //     background: transparent;
+    //     border: unset;
+    // }
+    .fixed-content{
+        background:#fafafa;
+    }
+    .item-ios{
+        background:transparent;
+    }
+    .item-ios.item-block .item-inner{
+        border-bottom:0 !important;
+    }
+    .notice-head {
+        position: relative;
+        .head-bg {
+            height: 24rem;
+        }
+        .head-info {
+            position: absolute;
+            top: 3rem;
+            img {
+                 width: 45%;
+                 float: left;
+                 object-fit: cover;
+                 height: 14rem;
+             }
+             .notice-info {
+                 width: 55%;
+                 float: left;
+                 h4,p {
+                     margin: 0;
+                     line-height: 2rem;
+                     overflow: hidden;
+                     text-overflow:ellipsis;
+                     white-space: nowrap;
+                     padding: 0 0 0 1rem;
+                     color: #fff;
+                 }
+                 h4 {
+                     color: #fff;
+                     line-height: 4rem;
+                     span {
+                         font-size: 3rem;
+                     }
+                 }
+             }
+        }
+    }
+    .demand_choose{
+        width:100%;
+        height:auto;
+        overflow: hidden;
+        .demand_choose_box{
+            width:94%;
+            height:auto;
+            overflow: hidden;
+            background:#fff;
+            margin: 3%;
+            border-radius:4px;
+            padding: 0 3%;
+            .demand_choose_content{
+                height:auto;
+                overflow: hidden;
+                border-bottom:1px solid #d9d9d9;
+                h5{
+                    font-size: 1.7rem;
+                    color:#222;
+                }
+                p{
+                    font-size: 1.5rem;
+                    color:#666;
+                    line-height: 2.5rem;
+                }
+            }
+            .demand_choose_roles{
+                padding: 0.5rem;
+                img {
+                    height: 2.4rem;
+                    height: 2.4rem;
+                    border-radius: 50%;
+                    vertical-align: middle;
+                    margin-right: 0.3rem;
+                }
+                em {
+                    font-style: normal;
+                    line-height: 3.4rem;
+                    font-size: 1.6rem;
+                }
+                button {
+                    float:right;
+                    border-radius: 2.4rem;
+                }
+            }
+        }
+    }
+}

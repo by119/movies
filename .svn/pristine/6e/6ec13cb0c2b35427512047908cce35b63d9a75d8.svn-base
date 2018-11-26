@@ -1,0 +1,61 @@
+import { Component, ViewChild, Input } from '@angular/core';
+import { IonicPage, NavController, NavParams, InfiniteScroll, Content } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+@IonicPage({ name: 'promo' })
+@Component({
+  selector: 'page-promo',
+  templateUrl: 'promo.html',
+})
+export class PromoPage {
+  @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll;
+  @ViewChild(Content) content: Content;
+  pet = '1';
+
+  @Input() notices = [];
+  @Input() organs = [];
+
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cp:CommonProvider
+  ) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad PromoPage');
+    this.noticeList();    //通告
+    this.organsList();    //组训
+  }
+
+  // 通告
+  noticeList(){
+    this.cp.getData("annunciate/getList",{
+      p:1,
+      numPerPage:10,
+      is_completed:1,
+    }).then((res:any)=>{
+      this.notices = res.data;
+      console.log(res.data[0].annunciate_type.name,'这是项目推荐的通告')
+    })
+  }
+
+  //组训
+  organsList(){
+    this.cp.getData("annunciate/getList",{
+      p:1,
+      numPerPage:10,
+      is_completed:0,
+    }).then((res:any)=>{
+      this.organs = res.data;
+      console.log(res,'这是项目推荐的通告')
+    })
+  }
+
+
+  doInfinite() {
+    console.log('上拉加载');
+    this.infiniteScroll.enable(false);
+  }
+
+}

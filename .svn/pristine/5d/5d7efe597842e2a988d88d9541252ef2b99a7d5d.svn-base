@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>我的档期</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="date-box-null">
+    <ion-item>
+      <ion-label>无档期</ion-label>
+      <ion-checkbox [(ngModel)]="date0" (click)="updateDateState(0)" color="change"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>有档期</ion-label>
+      <ion-checkbox [(ngModel)]="date1" (click)="updateDateState(1)" color="change"></ion-checkbox>
+    </ion-item>
+  </div>
+  <div class="date-box">
+    <ion-item style="text-align: center">
+      请选择有档期的月份（非必选）
+    </ion-item>
+    <ion-item>
+      <ion-label>7月</ion-label>
+      <ion-checkbox (ionChange)="updateDate()" color="change"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>8月</ion-label>
+      <ion-checkbox color="change"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>9月</ion-label>
+      <ion-checkbox color="change"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>10月</ion-label>
+      <ion-checkbox color="change"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>11月</ion-label>
+      <ion-checkbox color="change"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>12月</ion-label>
+      <ion-checkbox color="change"></ion-checkbox>
+    </ion-item>
+  </div>
+
+</ion-content>

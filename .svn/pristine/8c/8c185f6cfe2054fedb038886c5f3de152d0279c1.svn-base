@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <!-- <div class="transheader">
+    <img src="{{notice.pic_url}}" />
+    <ion-header>
+      <ion-navbar>
+        <h4> 注册 </h4>
+      </ion-navbar>
+    </ion-header>
+  </div> -->
+  <div class="notice-head">
+    <img src="{{headBg}}" alt="" class="head-bg">
+    <div class="bg-cover"></div>
+    <ion-item class="head-info" padding>
+      <img class="clearfix" src="{{notice.pic_url}}" alt="">
+      <div class="notice-info clearfix">
+        <p>类型：{{notice.type}}</p>
+        <p>导演：{{notice.director}}</p>
+        <p>开机时间：{{notice.start_time}}</p>
+        <p>周期：{{notice.time}}</p>
+        <p>地点：{{notice.addr}}</p>
+        <h4>共招募
+          <span>{{notice.num}}</span>人</h4>
+      </div>
+    </ion-item>
+  </div>
+  <ion-item>
+    <div class="list-title">
+      <ion-icon class="iconfont icon-artist"></ion-icon>
+      <span>选用艺人</span>
+    </div>
+    <div id="container">
+      <people *ngFor="let item of artistList;let i=index" [item]="item"></people>
+    </div>
+  </ion-item>
+</ion-content>

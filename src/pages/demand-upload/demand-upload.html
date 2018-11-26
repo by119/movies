@@ -1,0 +1,220 @@
+<!--
+Generated template for the DemandUploadPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header>
+<ion-navbar color="change">
+    <ion-title>发布组训</ion-title>
+</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title">剧名</div>
+            <input type="text" class='con-all-input' placeholder="点击此处输入剧名" [(ngModel)]="name">
+        </ion-list>
+    </ion-item>
+    <div class="logistics">
+        <ion-item>
+        <ion-label>类型</ion-label>
+        <ion-select placeholder="请选择类型" multiple="false" interface="action-sheet"
+            cancelText="取消" [(ngModel)]="ship">
+            <ion-option *ngFor="let item of typeList" [value]="item.id">{{item.name}}</ion-option>
+        </ion-select>
+        </ion-item>
+    </div>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title">导演</div>
+            <input type="text" class='con-all-input' placeholder="点击此处输入导演" [(ngModel)]="director">
+        </ion-list>
+    </ion-item>
+    
+    <div class="logistics">
+        <ion-item>
+            <ion-label>开机时间</ion-label>
+            <ion-datetime displayFormat="YYYY/MM/DD" [(ngModel)]="myDate" placeholder="请选择开机时间" cancelText="取消" doneText="确定"></ion-datetime>
+        </ion-item>
+    </div>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title">周期(天)</div>
+            <input type="text" class='con-all-input' placeholder="点击此处输入周期" [(ngModel)]="days">
+        </ion-list>
+    </ion-item>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title">出品公司</div>
+            <input type="text" class='con-all-input' placeholder="点击此处输入出品公司" [(ngModel)]="outcompany">
+        </ion-list>
+    </ion-item>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title">制片公司</div>
+            <input type="text" class='con-all-input' placeholder="点击此处输入制片公司" [(ngModel)]="zhiCompany">
+        </ion-list>
+    </ion-item>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title">编剧团队</div>
+            <input type="text" class='con-all-input' placeholder="点击此处输入编剧团队" [(ngModel)]="bianjuteam">
+        </ion-list>
+    </ion-item>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title">选角导演</div>
+            <input type="text" class='con-all-input' placeholder="点击此处输入选角导演" [(ngModel)]="roleDirector">
+        </ion-list>
+    </ion-item>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title">演员副导演</div>
+            <input type="text" class='con-all-input' placeholder="点击此处输入演员副导演" [(ngModel)]="roleViceDirector">
+        </ion-list>
+    </ion-item>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title">邮箱</div>
+            <input type="text" class='con-all-input' placeholder="点击此处输入邮箱" [(ngModel)]="email">
+        </ion-list>
+    </ion-item>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title">地址</div>
+            <input type="text" class='con-all-input' placeholder="点击此处输入地址" [(ngModel)]="address">
+        </ion-list>
+    </ion-item>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title">拍摄地点</div>
+            <input type="text" class='con-all-input' placeholder="点击此处输入拍摄地点" [(ngModel)]="place">
+        </ion-list>
+    </ion-item>
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title1">上传海报</div>
+                <div class="imgBox" style="width:100%;margin-right: 2%;">
+                    <ion-row class="stylephotos">
+                            <!-- *ngIf="isShowImg" -->
+                        <ion-col col-6 col-sm-6 col-md-20 class="photo_container" *ngIf="isShowImg">
+                            <div class="photo" style="height:12rem;">
+                                <!-- <a class="close" (click)="styledeleteImg(stylephotos)"></a> -->
+                                <img [src]="cardzPhotos" [alt]="cardzPhotos" style="height:12rem;">
+                            </div>
+                        </ion-col>
+                        <ion-col col-6 col-sm-6 col-md-20 class="photo_container" align-items-center *ngIf="photoZShow">
+                            <div class="photo upload" (click)="cardzaddImg()" style="height:12rem;">
+                                <ion-icon name="md-camera"></ion-icon>
+                                <span>上传海报</span>
+                                <form action="" #form2>
+                                    <input type="file" name="file" id="fileid" accept="image/*" (change)="cardzuploadImg($event)">
+                                </form>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            
+        </ion-list>
+    </ion-item>
+
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title1">上传海报封面</div>
+            <div class="imgBox" style="width:100%;">
+                <ion-row class="stylephotos">
+                        <!-- *ngIf="isFanShowImg" -->
+                    <ion-col col-6 col-sm-6 col-md-20 class="photo_container" *ngIf="isFanShowImg">
+                        <div class="photo" style="height:12rem;">
+                            <!-- <a class="close" (click)="styledeleteImg(stylephotos)"></a> -->
+                            <img [src]="cardfPhotos" [alt]="cardfPhotos" style="height:12rem;">
+                        </div>
+                    </ion-col>
+                    <ion-col col-6 col-sm-6 col-md-20 class="photo_container" align-items-center *ngIf="photoShow">
+                        <div class="photo upload" (click)="cardfaddImg()" style="height:12rem;">
+                            <ion-icon name="md-camera"></ion-icon>
+                            <span>上传海报封面</span>
+                            <form action="" #form3>
+                                <input type="file" name="file" id="fileid" accept="image/*" (change)="cardfuploadImg($event)">
+                            </form>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </ion-list>
+    </ion-item>
+
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title1">剧情简介</div>
+            <textarea placeholder="点击此处输入剧情简介" class="con-text" [(ngModel)]="content"></textarea>
+        </ion-list>
+    </ion-item>
+
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title1">招募角色介绍</div>
+            <div *ngIf="rolesTextArr&&rolesTextArr.length>0" class="roleIntro">
+                <div *ngFor="let list of rolesTextArr;let i=index;" class="roles_text">
+                    <h5>{{list?.role_name}}<span>{{list?.role_sex==0?'男':'女'}}</span></h5>
+                    <ion-icon item-end class="del-btn" name="ios-trash-outline" (click)="confirmDel(i)"></ion-icon>
+                    <p>{{list?.content}}</p>
+                </div>
+            </div>
+            <div class="upload1" (click)="addRole()">
+                <ion-icon class="iconfont icon-upload-s tian"></ion-icon>
+                <span class="upload-title">点击添加更多的角色</span>
+            </div>            
+        </ion-list>
+    </ion-item>
+
+    <ion-item class="con-all">
+        <ion-list class="con-all-content">
+            <div class="con-all-title1">艺人选拨题目</div>
+            <textarea placeholder="点击此处输入艺人选拨题目" class="con-text" [(ngModel)]="subject"></textarea>
+        </ion-list>
+    </ion-item>     
+</ion-content>
+<ion-footer>
+    <button (click)="demandUpload()" ion-button color="change">确认提交</button>
+</ion-footer>
+
+<!-- 添加角色弹窗 -->
+
+<div class="addRole" *ngIf="addRoleInfo">
+    <div class="addRoleBox">
+        <div class="addRole_title">添加角色</div>
+        <ion-icon ios="ios-close" md="md-close" class="addRole_close" (click)="addRole()"></ion-icon>
+        <div class="addRole_content">
+            <div class="addrole_name">
+                <h3>角色姓名：</h3>
+                <input type="text" placeholder="点击此处输入您的姓名" [(ngModel)]="rolesName">
+            </div>
+            <!-- <div class="addrole_sex">
+                <h3>性别</h3>
+                <ion-select placeholder="请选择类型" multiple="false" interface="action-sheet"
+                    cancelText="取消" [(ngModel)]="sex">
+                    <ion-option *ngFor="let item of typeListSex" [value]="item.id">{{item.name}}</ion-option>
+                </ion-select>
+            </div> -->
+            <div class="logistics addrole_sex">
+                <ion-item>
+                    <ion-label>角色性别</ion-label>
+                    <ion-select placeholder="请选择类型" multiple="false" interface="action-sheet"
+                        cancelText="取消" [(ngModel)]="sex">
+                        <ion-option *ngFor="let item of typeListSex" [value]="item.id">{{item.name}}</ion-option>
+                    </ion-select>
+                </ion-item>
+            </div>
+            <div class="addrole_name">
+                <h3>角色介绍：</h3>
+                <textarea [(ngModel)]="rolesText" name="" id="" cols="30" rows="10" placeholder="点击此处输入您的角色内容"></textarea>
+            </div>
+            
+        </div>
+        <button class="addRole_Button" (click)="confirmAddRoles()">确认添加</button>
+    </div>
+</div>

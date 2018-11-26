@@ -1,0 +1,19 @@
+import { Component, Input } from '@angular/core';
+import { CommonProvider } from "../../providers/common/common";
+@Component({
+  selector: 'organ',
+  templateUrl: 'organ.html'
+})
+export class OrganComponent {
+  @Input('item') item;
+  @Input('lastPage') lastPage;
+  constructor(public cp: CommonProvider) { }
+  // 删除我发布的需求
+  needDelete(id,i) {
+    this.cp.getData("annunciate/deleteAnnunciate", {
+      annunciate_id: id
+    }).then((res: any) => {
+      console.log(res);
+    })
+  }
+}

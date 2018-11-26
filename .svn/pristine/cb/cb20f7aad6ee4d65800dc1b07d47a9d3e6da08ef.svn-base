@@ -1,0 +1,10 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>制片厂认证</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+</ion-content>

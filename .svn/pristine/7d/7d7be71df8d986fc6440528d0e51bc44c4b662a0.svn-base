@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+        <img class="avatar" src="../assets/imgs/avatar.png" alt="">
+      </button>
+    </ion-buttons>
+    <ion-title>
+      艺人
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goTo({view:'search'})">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="tabs" (ionChange)="changeSeg()" mode="md">
+    <ion-segment-button value="0">
+      综合排序
+    </ion-segment-button>
+    <ion-segment-button value="1" (click)="filterShow()">
+      筛选
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content padding>
+  <!-- <div class="rank" [ngSwitch]="tabs"> -->
+  <!-- 综合排序 -->
+  <!-- <div class="artist-box" *ngIf="artistList&&artistList.length>0;else elseBlank">
+    <people *ngFor="let item of artistList;let i=index" [item]="item" (click)="cp.goto({view:'artist-detail',id:i})"></people>
+  </div> -->
+
+  <div id="container">
+    <div class="box" *ngFor="let image of img_data">
+        <div class="box_img">
+            <img src="{{image.src}}" alt="">
+            <div>{{image.type}}</div>
+        </div>
+    </div>
+</div>
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="circles" loadingText="正在加载...">
+    </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+
+
+  <ng-template #elseBlank>
+    <div class="blank">
+      <ion-icon class="iconfont icon-blank"></ion-icon>
+      <p>亲，此处没有内容～</p>
+    </div>
+  </ng-template>
+  <!-- </div> -->
+  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+  
+</ion-content>
+<!-- 筛选条件 -->
+<ion-item *ngIf="filter" class="filter-box">
+    <div class="filter-bg" (click)="close()"></div>
+    <div class="filter">
+      <p>筛选</p>
+      <div *ngFor="let list of filterList;let i=index;" class="options clearfix">
+        <p>{{list?.title}}</p>
+        <div *ngFor="let item of list?.pro;let j=index;" class="option">
+          <div (click)="choosePro(i,j)" [ngClass]="{'filter-active':j==proIndex[i]}">{{item?.text}}</div>
+        </div>
+      </div>
+      <div class="filter-btn">
+        <button ion-button round  color="change" (click)="close()">取消</button>
+        <button ion-button round  color="change" (click)="confirm()">确定</button>
+      </div>
+    </div>
+  </ion-item>

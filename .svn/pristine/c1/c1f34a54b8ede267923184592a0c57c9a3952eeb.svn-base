@@ -1,0 +1,32 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+/**
+ * Generated class for the DemandUploadPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+@IonicPage({ name: 'demand-upload' })
+@Component({
+  selector: 'page-demand-upload',
+  templateUrl: 'demand-upload.html',
+})
+export class DemandUploadPage {
+  typeList:any=[]
+  timeList:any=[]
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad DemandUploadPage');
+    this.typeList=[1,2,3,4,5,6,9,8]
+    this.timeList=['widha','das ','dasd','dew']
+    
+  }
+  typeFn(){
+    
+    console.log(111)
+  }
+  timeFn(){
+    console.log(2222)
+  }
+
+}

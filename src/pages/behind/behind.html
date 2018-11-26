@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-buttons start>
+      <button *ngIf="cp?.u?.id" ion-button icon-only menuToggle>
+        <img class="avatar" src="{{cp?.u?.avatar ? cp?.u?.avatar:'../../../../assets/imgs/avatar.png'}}" alt="">
+      </button>
+      <div *ngIf="!cp?.u?.id" start class="login-btn" (click)="cp.goto({view:'login'})">登录</div>
+    </ion-buttons> 
+    <ion-title>
+      幕后团队
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cp.goto({view:'search'})">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="tabs" (ionChange)="changeSeg()" mode="md">
+    <ion-segment-button value="0">
+      综合排序
+    </ion-segment-button>
+    <ion-segment-button value="1" (click)="filterShow()">
+      筛选
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content padding>
+  <div id="container" *ngIf="items[tabs]&&items[tabs].length>0;else elseBlank">
+    <people *ngFor="let item of items[tabs];let i=index" [item]="item" lastPage='behind'></people>
+  </div>
+  <ng-template #elseBlank>
+    <div class="blank">
+      <ion-icon class="iconfont icon-blank"></ion-icon>
+      <p>亲，此处没有内容～</p>
+    </div>
+  </ng-template>
+  <ion-infinite-scroll (ionInfinite)="doInfinite()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<!-- 筛选条件 -->
+<ion-item *ngIf="filter" class="filter-box">
+  <div class="filter-bg" (click)="close()"></div>
+  <div class="filter">
+    <p>筛选</p>
+    <p style="color:#333">职能</p>
+    <div class="options clearfix">
+      <p>制片团队</p>
+      <div *ngFor="let item of production_team;let i=index;" class="option">
+        <div (click)="choosePro(0,i,item.id)" [ngClass]="{'filter-active':i==posIndex[0]&&filterType==0}">{{item?.name}}</div>
+      </div>
+    </div>
+    <div class="options clearfix">
+      <p>技术团队</p>
+      <div *ngFor="let item of function_team;let i=index;" class="option">
+        <div (click)="choosePro(1,i,item.id)" [ngClass]="{'filter-active':i==posIndex[0]&&filterType==1}">{{item?.name}}</div>
+      </div>
+    </div>
+    <div class="options clearfix">
+      <p style="color:#333">类型</p>
+      <div *ngFor="let item of annunciate_type;let i=index;" class="option">
+        <div (click)="choosePro(2,i,item.id)" [ngClass]="{'filter-active':i==posIndex[1]}">{{item?.name}}</div>
+      </div>
+    </div>
+    <div class="filter-btn">
+      <button ion-button round color="change" (click)="close()">取消</button>
+      <button ion-button round color="change" (click)="confirm()">确定</button>
+    </div>
+  </div>
+</ion-item>

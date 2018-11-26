@@ -1,0 +1,61 @@
+#container {
+    position: relative;
+    height: auto;
+    .box {
+        padding: .5rem;
+        width: 50%;
+        float: left;
+        .box_img {
+            border: 1px solid #cccccc;
+            box-shadow: 0 0 5px #ccc;
+            border-radius: .5rem;
+            overflow: hidden;
+            background-color: #fff;
+            img {
+                width: 100%;
+                height: auto;
+            }            
+            p {
+                color: #333;
+                font-size: 1.6rem;
+                padding: 0 .5rem;
+                margin: 0;
+                line-height: 2.4rem;
+                span {
+                    display: inline-block;
+                    width: 50%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    i {
+                        color: #fff;
+                        font-style: normal;
+                        display: inline-block;
+                        width: 1.4rem;
+                        height: 1.4rem;
+                        line-height: 1.4rem;
+                        font-size: 1rem;
+                        margin-left: .2rem;
+                        text-align: center;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-image: url(../assets/icon/vip_bg.png);
+                        vertical-align: middle;
+                    }
+                }
+                span:nth-child(2n) {
+                    text-align: right;
+                    float: right;
+                    color: #999;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+    // .artist-list {
+    // }
+    // .artist-list:nth-child(2n+1) {
+    //     margin-right: 2%;
+    // }
+}

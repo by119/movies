@@ -1,0 +1,28 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+
+@IonicPage({ name: 'date-modify' })
+@Component({
+  selector: 'page-date-modify',
+  templateUrl: 'date-modify.html',
+})
+export class DateModifyPage {
+  date0 = true;
+  date1 = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad DateModifyPage');
+  }
+  updateDateState(type) {
+    console.log(type);
+      this.date0 = type == 0 ? !this.date0 : this.date0;
+      this.date1 = type == 1 ? !this.date1 : this.date1;
+    console.log(type, this.date0, this.date1);
+  }
+  updateDate() {
+    console.log(1);
+  }
+}

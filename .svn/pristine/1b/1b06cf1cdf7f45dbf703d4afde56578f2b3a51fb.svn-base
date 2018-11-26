@@ -1,0 +1,23 @@
+import { Component,Input } from '@angular/core';
+
+/**
+ * Generated class for the WorksComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+@Component({
+  selector: 'works',
+  templateUrl: 'works.html'
+})
+export class WorksComponent {
+  @Input('videoUrl') videoUrl;
+  @Input('lastPage') pageName;
+  text: string;
+
+  constructor() {
+    console.log('Hello WorksComponent Component');
+    this.text = 'Hello World';
+  }
+
+}

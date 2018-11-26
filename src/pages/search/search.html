@@ -1,0 +1,27 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>搜索</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background:#fafafa;">
+  <div class="search_box">
+    <div class="serch_mids">
+      <input type="text" placeholder="请输入您想要搜索的内容" [(ngModel)]="searchVal">
+      <ion-icon name="md-search" (click)="cp.goto({view:'artistworks',keyword:this.searchVal})" ></ion-icon>
+    </div>
+    <ion-list *ngIf="searchInfo">
+      <ion-item *ngFor="let item of items">
+        {{ item }}
+      </ion-item>
+    </ion-list>
+    <div class="serch_history">
+      <p>历史搜索</p>
+      <div class="serch_historyList" *ngFor="let item of historySearchInfo;let i=index;">
+        <span (click)="cp.goto({view:'artistworks',keyword:item.keyword})">{{item.keyword}}</span>
+        <ion-icon name="ios-trash-outline" class="icon_history" (click)="deleteSearch(item.id,i)"></ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-content>

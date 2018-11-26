@@ -1,0 +1,39 @@
+import { Component, Input } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+
+
+@IonicPage({ name: 'collect' })
+@Component({
+  selector: 'page-collect',
+  templateUrl: 'collect.html',
+})
+export class CollectPage {
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cp:CommonProvider
+  ) {
+  }
+
+  @Input() organs = [];   //制片人收藏
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad CollectPage');
+    this.collectList();
+  }
+
+  //制片人收藏
+  collectList(){
+    this.cp.getData("collection/getList",{
+      // producer_id: 2,
+      user_id:1,
+      uid:5,
+    }).then((res:any)=>{
+      this.organs = res.data;
+      console.log(res,'这是制片人的收藏')
+    })
+  }
+
+}

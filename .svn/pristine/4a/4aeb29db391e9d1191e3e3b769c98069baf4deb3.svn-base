@@ -1,0 +1,58 @@
+<ion-menu [content]="content" side="left">
+    <ion-content class="artist-center" style="background-image: url(../../assets/imgs/center_bg.png)">
+        <ion-list class="avatar">
+            <img src="{{cp?.u?.avatar ? cp?.u?.avatar:'../../../../assets/imgs/avatar.png'}}" alt="">
+            <p>{{cp?.u?.name}}
+                <span *ngIf="cp?.u?.user_profile?.authentication">V</span>
+            </p>
+        </ion-list>
+        <ion-list *ngIf="cp?.u?.type == 0">
+            <ion-icon class="iconfont icon-work" (click)="goTo({view:'work'})"></ion-icon>
+            <span  (click)="goTo({view:'work'})">工作状态</span>         
+            <!-- <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)"></button> -->
+        </ion-list>
+        <ion-list *ngIf="cp?.u?.type == 2">
+            <ion-icon class="iconfont icon-work" (click)="goTo({view:'my-organ'})"></ion-icon>
+            <span  (click)="goTo({view:'my-organ'})">工作状态</span>         
+        </ion-list>
+        <ion-list *ngIf="cp?.u?.type == 1">
+            <ion-icon class="iconfont icon-work" (click)="goTo({view:'studio-introductions'})"></ion-icon>
+            <span  (click)="goTo({view:'studio-introductions'})">制片厂介绍</span>         
+        </ion-list>
+        <ion-list *ngIf="cp?.u?.type == 2">
+            <ion-icon class="iconfont icon-intro" (click)="goTo({view:'intro'})"></ion-icon>
+            <span (click)="goTo({view:'intro'})">我的介绍</span>            
+        </ion-list>
+        <ion-list  *ngIf="cp?.u?.type == 2">
+            <ion-icon class="iconfont icon-letter" (click)="goTo({view:'letter'})"></ion-icon>
+            <span  (click)="goTo({view:'letter'})">我的私信</span>
+        </ion-list>
+        <ion-list *ngIf="cp?.u?.type == 1">
+            <ion-icon class="iconfont icon-demand" (click)="goTo({view:'demand'})"></ion-icon>
+            <span  (click)="goTo({view:'demand'})">我发布的需求</span>
+        </ion-list>
+        <ion-list *ngIf="cp?.u?.type == 2">
+            <ion-icon class="iconfont icon-identity" (click)="goTo({view:'identity'})"></ion-icon>
+            <span  (click)="goTo({view:'identity'})">艺人认证</span>
+        </ion-list>
+        <ion-list *ngIf="cp?.u?.type == 1">
+            <ion-icon class="iconfont icon-identity" (click)="goTo({view:'studio-identity'})"></ion-icon>
+            <span  (click)="goTo({view:'studio-identity'})">制片厂认证</span>
+        </ion-list>
+        <ion-list *ngIf="cp?.u?.type != 0">
+            <ion-icon class="iconfont icon-collect" (click)="goTo({view:'collect'})"></ion-icon>
+            <span  (click)="goTo({view:'collect'})">我的收藏</span>            
+        </ion-list>
+        <ion-list>
+            <ion-icon class="iconfont icon-set" (click)="goTo({view:'setting'})"></ion-icon>
+            <span  (click)="goTo({view:'setting'})">我的设置</span>            
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<span class="dl" id="dl">
+    <img src="./assets/imgs/dl.png" />
+</span>

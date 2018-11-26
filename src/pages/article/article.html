@@ -1,0 +1,13 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>用户协议</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+   <div class="aricle" *ngIf="articleContent">
+     <h2>{{articleContent.title}}</h2>
+     <p [innerHtml]="articleContent.content"></p>
+   </div>
+</ion-content>

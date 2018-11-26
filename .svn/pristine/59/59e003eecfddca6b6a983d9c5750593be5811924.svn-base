@@ -1,0 +1,23 @@
+import { Component,Input } from '@angular/core';
+import { iterateListLike } from '@angular/core/src/change_detection/change_detection_util';
+
+/**
+ * Generated class for the PeopleComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+@Component({
+  selector: 'people',
+  templateUrl: 'people.html'
+})
+export class PeopleComponent {
+  @Input('item') item;
+  text: string;
+
+  constructor() {
+    console.log('Hello PeopleComponent Component');
+    this.text = 'Hello World';
+  }
+
+}

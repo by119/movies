@@ -1,0 +1,4 @@
+<!-- Generated template for the VideoComponent component -->
+<div>
+  {{text}}
+</div>

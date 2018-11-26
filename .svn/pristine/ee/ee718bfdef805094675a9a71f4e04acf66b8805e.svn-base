@@ -1,0 +1,41 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>选取艺人</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="notice-head">
+    <img src="{{demandChooseInfo?.cover_img}}" alt="" class="head-bg">
+    <div class="bg-cover"></div>
+    <ion-item class="head-info" padding *ngIf="demandChooseInfo">
+      <img class="clearfix" src="{{demandChooseInfo?.poster}}" alt="">
+      <div class="notice-info clearfix">
+        <p>类型：{{demandChooseInfo?.annunciateType.name}}</p>
+        <p>导演：{{demandChooseInfo?.director}}</p>
+        <p>开机时间：{{demandChooseInfo?.begin_time}}</p>
+        <p>周期：{{demandChooseInfo?.cycle}}</p>
+        <p>地点：{{demandChooseInfo?.place}}</p>
+        <h4>共招募
+          <span>{{demandChooseInfo?.roles_count}}</span>人</h4>
+      </div>
+    </ion-item>
+  </div>
+  <div class="demand_choose">
+    <div class="demand_choose_box" *ngFor="let item of annunciateRoles;">
+      <div class="demand_choose_content">
+        <h5>角色1：{{item.role_name}}   {{item.role_sex}}</h5>
+        <p>{{item.content}}</p>
+      </div>
+      <div class="demand_choose_roles">
+        <span>
+          <img src="" alt="">
+          <em>张嘉佳</em>
+        </span>
+        <button ino-button color="change">重新选取</button>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,37 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+
+
+@IonicPage({ name: 'date-modify' })
+@Component({
+  selector: 'page-date-modify',
+  templateUrl: 'date-modify.html',
+})
+export class DateModifyPage {
+  date0 = false;
+  date1 = false;
+  monthState: any = [!1, !1, !1, !1, !1, !1];
+  monthList = [{ month: '6月', state: 0 }, { month: '7月', state: 0 }, { month: '8月', state: 0 }, { month: '9月', state: 0 }, { month: '10月', state: 1 }, { month: '11月', state: 1 }];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cp: CommonProvider) {
+  }
+
+  ionViewDidLoad() {
+
+    for (let i = 0; i < this.monthList.length; i++) {
+      this.monthState[i] = this.monthList[i].state ? !0 : !1;
+    }
+    // console.log(this.monthState,this.monthList, 'state');
+  }
+  updateDateState(type) {
+    if (type == 0) {
+      this.date1 = this.date0 ? !this.date0 : false;
+    }
+    if (type == 1) {
+      this.date0 = this.date1 ? !this.date1 : false;
+    }
+  }
+  updateDate() {
+    console.log(this.monthState, 'state');
+  }
+}

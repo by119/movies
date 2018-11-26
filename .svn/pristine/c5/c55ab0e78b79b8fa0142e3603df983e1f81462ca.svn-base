@@ -1,0 +1,57 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {CommonProvider} from "../../providers/common/common";
+/**
+ * Generated class for the ArtistDetailPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({
+  name: 'artist-detail',
+  segment: 'artist-detail/:title/:id'
+})
+@Component({
+  selector: 'page-artist-detail',
+  templateUrl: 'artist-detail.html',
+})
+export class ArtistDetailPage {
+  tabs: any = '0';
+  pageName = 'artist-detail';
+  isCollect = true;
+  introList: any = [{ lawyer_id: 1, name: '刘健刘健刘a', tips: '从业年', pic_url: '../../assets/imgs/lawyer1.png' }, { lawyer_id: 2, name: '郝帅', tips: '资深律师', pic_url: '../../assets/imgs/lawyer2.png' }, { lawyer_id: 3, name: '刘健', tips: '从业律师', pic_url: '../../assets/imgs/lawyer1.png' }];
+  dataList = [{ state: 0, type: 1, list: [{ month: '10月', state: 1 }, { month: '11月', state: 1 }, { month: '12月', state: 0 }, { month: '1月', state: 1 }, { month: '2月', state: 0 }, { month: '3月', state: 1 }] }];
+  artistImg = [{ src: '../../assets/imgs/avatar.png' }, { src: '../../assets/imgs/avatar2.png' }, { src: '../../assets/imgs/avatar.png' }, { src: '../../assets/imgs/avatar2.png' }, { src: '../../assets/imgs/avatar.png' }, { src: '../../assets/imgs/avatar2.png' }, { src: '../../assets/imgs/avatar.png' }, { src: '../../assets/imgs/avatar2.png' }, { src: '../../assets/imgs/avatar.png' }, { src: '../../assets/imgs/avatar2.png' }]
+  videoList = [{ src: 'http://static.videogular.com/assets/videos/videogular.mp4' }, { src: 'http://static.videogular.com/assets/videos/videogular.mp4' }, { src: 'http://static.videogular.com/assets/videos/videogular.mp4' }];
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cp:CommonProvider
+  ) {
+  }
+
+  ionViewDidLoad() {
+    console.log(this.navParams, 'ionViewDidLoad ArtistDetailPage');
+    this.videoLists();
+  }
+
+  // 艺人视频
+  videoLists(){
+    this.cp.getData("areist_video/getlist",{
+
+    }).then((res) => {
+      console.log(res,'这是艺人的视频')
+    })
+  }
+
+  collect() {
+    console.log('收藏艺人');
+  }
+  changeSeg() {
+    console.log('切换tab')
+  }
+  contactTA() {
+    console.log('联系TA')
+  }
+}

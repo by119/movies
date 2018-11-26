@@ -1,0 +1,13 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>制片厂介绍</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="studio_box" *ngIf="studionInfo">
+      <h1>{{studionInfo?.company_name}}</h1>
+      <p>{{studionInfo?.introduction}}</p>
+  </div>
+</ion-content>

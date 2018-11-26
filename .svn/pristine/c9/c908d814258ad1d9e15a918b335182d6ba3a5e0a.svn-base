@@ -1,0 +1,21 @@
+<ion-list class="organ-list">
+  <div class="organ-detail clearfix">
+    <img src="{{item.cover_img}}" alt="">
+    <div class="organ-info">
+      <p class="organ-title">{{item.name}}</p>
+      <p>导演：{{item.director}}</p>
+      <p> 类型：{{item.annunciate_type.name}}</p>
+      <p>开机时间：{{item.begin_time}}</p>
+    </div>
+    <ion-icon *ngIf="lastPage=='my-organ' || lastPage=='demand'" class="del-btn" name="ios-trash-outline" (click)="confirmDel()"></ion-icon>
+    <div class="organ-num">
+      <p class="num">{{item.roles_count}}</p>
+      <p>角色</p>
+    </div>
+  </div>
+  <div class="letter-btn" *ngIf="lastPage=='letter'">
+    <ion-icon class="iconfont icon-bell"></ion-icon>
+    <span>恭喜您被选用为xxx角色</span>
+    <button ion-button round color="change">去签约</button>
+  </div>
+</ion-list>

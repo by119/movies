@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar color="change">
+    <ion-buttons start>
+      <button *ngIf="cp?.u?.id" ion-button icon-only menuToggle>
+        <img class="avatar" src="{{cp?.u?.avatar ? cp?.u?.avatar:'../../../../assets/imgs/avatar.png'}}" alt="">
+      </button>
+      <div *ngIf="!cp?.u?.id" start class="login-btn" (click)="cp.goto({view:'login'})">登录</div>
+    </ion-buttons> 
+    <ion-title>
+      项目推介
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cp.goto({view:'search'})">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="tabs" (ionChange)="changeSeg()" mode="md">
+    <ion-segment-button value="1">
+      通告
+    </ion-segment-button>
+    <ion-segment-button value="0">
+      组训
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content padding>
+  <!-- 通告 组训 -->
+  <div *ngIf="items[tabs]&&items[tabs]?.length>0;else elseBlank">
+    <div *ngIf="tabs==1">
+      <notice *ngFor="let item of items[tabs]" [item]="item"></notice>
+    </div>
+    <div *ngIf="tabs==0">
+      <organ lastPage="promo" *ngFor="let item of items[tabs]" [item]="item"></organ>
+    </div>
+  </div>
+  <ng-template #elseBlank>
+    <div class="blank">
+      <ion-icon class="iconfont icon-blank"></ion-icon>
+      <p>亲，此处没有内容～</p>
+    </div>
+  </ng-template>
+  <ion-infinite-scroll (ionInfinite)="doInfinite()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<div class="release" *ngIf="cp?.u?.type==1&&tabs==0" (click)="cp.goto({view:'demand-upload'})">
+    <img src="../../assets/icon/nav.png" alt="">
+  </div>

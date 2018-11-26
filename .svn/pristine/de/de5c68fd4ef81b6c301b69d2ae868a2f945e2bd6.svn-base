@@ -1,0 +1,22 @@
+import { Component,Input } from '@angular/core';
+
+/**
+ * Generated class for the WorksComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+@Component({
+  selector: 'works',
+  templateUrl: 'works.html'
+})
+export class WorksComponent {
+
+  text: string;
+
+  constructor() {
+    console.log('Hello WorksComponent Component');
+    this.text = 'Hello World';
+  }
+
+}

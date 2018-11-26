@@ -1,0 +1,134 @@
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, InfiniteScroll, Content } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+
+@IonicPage({
+  name: 'artist-works',
+  segment: 'artist-works/:producer_id/:role_id'
+})
+@Component({
+  selector: 'page-artist-works',
+  templateUrl: 'artist-works.html',
+})
+export class ArtistWorksPage {
+  @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll;
+  @ViewChild(Content) content: Content;
+  tabs: any = "0"; items = [[], []]; page = [0, 0];
+  res = [];
+  params: any = {};
+  infiniteScrollState = [!0, !0];
+  size = 20;
+  producerId = null; //组训id
+  roleId = null;     //角色id
+  videoList = [];
+  filter = !1;
+  filterList = [];//筛选条件
+  age = []; //年龄
+  areist_type = []; //类型
+  major = [] //专业
+  proIndex = []; //属性数组
+  posIndex = []; //下标数组
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public cp: CommonProvider
+  ) {
+  }
+
+  ionViewDidLoad() {
+    console.log(this.navParams, 'artist-works1111');
+    this.producerId = this.navParams.get("producer_id")
+    this.roleId = this.navParams.get("role_id")
+    this.page[this.tabs] == 0 && this.doInfinite();
+    // this.artistWorkList();     //艺人投递作品列表
+    this.cp.getDataInfo("areist_delivery_woeks/condition",{}).then((e: any) => {
+      console.log(e, '筛选条件');
+      if(e.code==0){
+        this.filterList = e.data;
+        this.age = e.data.age; //年龄
+        this.areist_type = e.data.areist_type; //类型
+        this.major = e.data.major; //专业
+      }      
+    })
+  }
+
+  // 确定筛选
+  confirm() {
+    this.filter = !1;
+    this.page[this.tabs] = 0;
+    this.items[this.tabs] = [];
+    this.doInfinite();
+  }
+  // 取消筛选
+  close() {
+    this.filter = !1;
+  }
+  // 打开筛选
+  filterShow() {
+    this.filter = !0;
+  }
+  // 选择筛选属性
+  choosePro(filterType, i, id) {
+    console.log(filterType, i, id,'qq');
+    this.posIndex[filterType] = this.posIndex[filterType] == i ? null : i;
+    this.proIndex[filterType] = this.proIndex[filterType] == id ? null : id;
+    console.log(this.posIndex,this.proIndex,'aaaa');
+  }
+  // 艺人投递作品列表
+  // artistWorkList() {
+  //   this.cp.getDataInfo("areist_delivery_woeks/getList", {
+  //     annunciate_id: this.producerId
+  //   }).then((res: any) => {
+  //     this.videoList = res.data;
+  //     console.log(res.data[0].user.nickname, '这是艺人投递的作品')
+  //   })
+  // }
+
+  changeSeg() {
+    if (this.tabs == 1) {
+      this.filter = !0;
+    } else {
+      this.filter = !1;
+      this.infiniteScrollState[this.tabs] = !1;
+      this.infiniteScroll.enable(this.infiniteScrollState[this.tabs]);
+    }
+    0 == this.page[this.tabs] && this.doInfinite();
+    this.infiniteScroll.enable(this.infiniteScrollState[this.tabs]);
+  }
+  // 制片人选取艺人
+  chooseArist() {
+    this.cp.getDataInfo("annunciate_roles/choose", {
+      user_id: 1,
+      role_id: 3,
+      producer_id: 15
+    }).then((res: any) => {
+      console.log(res, '制片人选取艺人2222')
+    })
+  }
+
+  doInfinite() {
+    this.params = {
+      annunciate_id: this.producerId,
+      p: ++this.page[this.tabs],
+      numPerPage: this.size
+    }
+    this.cp.getDataInfo("areist_delivery_woeks/getList", this.params).then((e: any) => {
+      if (e.data.length > 0) {
+        this.res[this.tabs] = e;
+        this.items[this.tabs] = this.items[this.tabs].concat(this.res[this.tabs].data);
+        this.infiniteScroll.complete();
+        if (this.items[this.tabs].length == this.res[this.tabs].total) {
+          this.infiniteScrollState[this.tabs] = !1;
+          this.infiniteScroll.enable(this.infiniteScrollState[this.tabs]);
+        }else {
+          this.infiniteScrollState[this.tabs] = !0;
+          this.infiniteScroll.enable(this.infiniteScrollState[this.tabs]);
+        }
+        console.log(this.items,'aaa');
+      } else {
+        this.infiniteScrollState[this.tabs] = !1;
+        this.infiniteScroll.enable(this.infiniteScrollState[this.tabs]);
+      }
+    })
+  }
+}

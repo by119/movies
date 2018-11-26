@@ -1,0 +1,27 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+/**
+ * Generated class for the LegalMouldPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({ name: 'legal-mould' })
+@Component({
+  selector: 'page-legal-mould',
+  templateUrl: 'legal-mould.html',
+})
+export class LegalMouldPage {
+  items = [{pic_url:'../../assets/imgs/suggest.png',title:'艺人聘用合约模板',txt:'这是关于合约的简单介绍，这是关于合约的简单介绍。',price:'￥220',downUrl:'这是下载地址'},{pic_url:'../../assets/imgs/suggest.png',title:'艺人聘用合约模板',txt:'这是关于合约的简单介绍，这是关于合约的简单介绍。',price:'￥220',downUrl:'这是下载地址'}];
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LegalMouldPage');
+  }
+  downloadFile(url){
+    console.log('下载模板',url);
+  }
+}

@@ -1,0 +1,46 @@
+page-date-modify {
+    .scroll-content {
+        background-color: #fafafa;
+    }
+    .item-ios {
+        background-color: transparent;
+    }
+    .item-ios.item-block .item-inner {
+        border: unset;
+    }
+    .checkbox-ios .checkbox-icon {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .date-box-null,.date-box {
+        background-color: #fff;
+        border-radius: 0.5rem;
+        .list-ios > .item-block:first-child,
+        .list-ios > .item-block:last-child,
+        .list-ios > .item-wrapper:last-child .item-block {
+            border: none;
+        }
+        .item-ios .radio-ios {
+            border-radius: 50%;
+            position: relative;
+            width: 21px;
+            height: 21px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #c8c7cc;
+            background-color: #fff;
+        }
+        
+    }
+    .date-box {
+        margin-top: 1rem;
+        .item-cover {
+            border-top: 1px solid #fafafa;
+        }
+        .item.item-ios .checkbox-ios {
+            margin: 0;
+        }
+    }
+}

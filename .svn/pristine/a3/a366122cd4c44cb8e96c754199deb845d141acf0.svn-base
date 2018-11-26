@@ -1,0 +1,13 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>用户协议</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+   <div class="aricle">
+     <h2>用户协议</h2>
+     <p>这是用户协议呜呜呜呜</p>
+   </div>
+</ion-content>

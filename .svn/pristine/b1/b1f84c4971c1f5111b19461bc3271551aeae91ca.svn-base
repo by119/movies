@@ -1,0 +1,4 @@
+<!-- Generated template for the WorksComponent component -->
+<div>
+  {{text}}
+</div>

@@ -1,0 +1,23 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>搜索</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background:#fafafa;">
+  <div class="zuxunList" *ngIf="zuxunInfo&&zuxunInfo?.length>0">
+    <p class="search_title">组训</p>
+    <organ lastPage="promo" *ngFor="let item of zuxunInfo" [item]="item"></organ>
+  </div>
+  <div class="yirenList" id="container" *ngIf="yirenInfo&&yirenInfo?.length>0">
+    <p class="search_title">艺人</p>
+    <people *ngFor="let item of yirenInfo;let i=index" [item]="item" lastPage="artist"></people>
+  </div>
+  <div *ngIf="elseBlank">
+    <div class="blank">
+      <ion-icon class="iconfont icon-blank"></ion-icon>
+      <p>亲，此处没有内容～</p>
+    </div>
+  </div>
+</ion-content>

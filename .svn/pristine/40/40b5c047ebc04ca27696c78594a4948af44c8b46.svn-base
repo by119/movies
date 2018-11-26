@@ -1,0 +1,11 @@
+<div class="box artist-list">
+    <div class="box_img">
+        <img src="{{item.src}}" alt="">
+        <p>
+            <span>{{item.name}}
+                <i *ngIf="item?.vip">{{item?.vip}}</i>
+            </span>
+            <span>{{item.type}}</span>
+        </p>
+    </div>
+</div>

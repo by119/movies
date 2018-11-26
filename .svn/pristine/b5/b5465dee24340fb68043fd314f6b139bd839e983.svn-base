@@ -1,0 +1,40 @@
+import { Component, Input } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {CommonProvider} from "../../providers/common/common";
+/**
+ * Generated class for the LetterPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({ name: 'letter' })
+@Component({
+  selector: 'page-letter',
+  templateUrl: 'letter.html',
+})
+export class LetterPage {
+  @Input() organs = [{ src: '../../assets/imgs/organ1.png', title: '一克拉梦想', people: 20, type: '电视剧', tips: ['eager', 'hot'], director: '布鲁斯', start_time: '2018/09/16' }, { src: '../../assets/imgs/organ2.png', title: '三生三世 十里桃花', people: 2, type: '电视剧', tips: ['hot'], director: '黛尔', start_time: '2018/12/16' }];
+  pageName = 'letter'
+  
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public cp:CommonProvider) {
+  }
+
+  ionViewDidLoad() {
+    // console.log('ionViewDidLoad LetterPage');
+    this.letter()
+  }
+  letter(){
+    this.cp.getData("annunciate_roles/getList",{
+      
+    }).then((res:any) => {
+      console.log(res,'das');
+      this.organs = res.data
+      console.log(this.organs, '我的私信')
+    })
+  }
+
+}

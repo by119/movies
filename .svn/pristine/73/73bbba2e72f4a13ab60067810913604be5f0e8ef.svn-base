@@ -1,0 +1,38 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+
+/**
+ * Generated class for the DemandDetailPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({
+  name: 'demand-detail',
+  segment: 'demand-detail/:id'
+})
+@Component({
+  selector: 'page-demand-detail',
+  templateUrl: 'demand-detail.html',
+})
+export class DemandDetailPage {
+  lastPage = '';
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cp: CommonProvider) {}
+
+  demandInfo = "";    //组训详情
+  ionViewDidLoad() {
+    console.log(this.navParams,'ionViewDidLoad DemandDetailPage');
+    this.lastPage = this.navParams.get('lastPage')||'';
+    this.demandDetail();    //组训详情
+  }
+  // 组训详情
+  demandDetail() {
+    this.cp.getData("annunciate/detail", {
+      id: this.navParams.get("id")
+    }).then((res: any) => {
+      this.demandInfo = res.data;
+    })
+  }
+}

@@ -1,0 +1,12 @@
+page-about {
+    .about{
+        margin-top:44px;
+        h1{
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        p{
+            line-height: 2.3rem;
+        }
+    }
+}

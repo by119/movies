@@ -1,0 +1,201 @@
+<!--
+  Generated template for the ArtistDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>艺人详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content color="change2">
+  <div class="head-box" padding>
+    <div class="head-info">
+      <img src="../../assets/imgs/avatar.png" alt="" class="head-avatar">
+      <div class="collect" (click)="collect()">
+        <ion-icon *ngIf="!isCollect" color="orange" name="ios-star-outline"></ion-icon>
+        <ion-icon *ngIf="isCollect" color="orange" name="ios-star"></ion-icon>
+        <span>收藏</span>
+      </div>
+      <div class="head-content">
+        <h4>杨秀芹</h4>
+        <p>影视演员</p>
+        <ion-item>
+          <div class="intro-base">
+            <div class="intro-age">
+              <h3>21</h3>
+              <p>age</p>
+            </div>
+            <div class="intro-age">
+              <h3>175</h3>
+              <p>cm</p>
+            </div>
+            <div class="intro-age">
+              <h3>51</h3>
+              <p>kg</p>
+            </div>
+          </div>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+  <ion-item>
+    <div class="detail-box">
+      <ion-segment [(ngModel)]="tabs" (ionChange)="changeSeg()" mode="md">
+        <ion-segment-button value="0">
+          简介
+        </ion-segment-button>
+        <ion-segment-button value="1">
+          相册
+        </ion-segment-button>
+        <ion-segment-button value="2">
+          视频
+        </ion-segment-button>
+      </ion-segment>
+      <div class="detail-content" [ngSwitch]="tabs">
+        <!-- 简介 -->
+        <div *ngSwitchCase="0">
+          <div *ngIf="1;else elseBlank">
+            <ion-item>
+              <ion-icon class="iconfont icon-card"></ion-icon>
+              <span>个人信息</span>
+              <div class="people-info">
+                <div>
+                  <span>性别</span>
+                  <span>女</span>
+                </div>
+                <div>
+                  <span>民族</span>
+                  <span>汉</span>
+                </div>
+                <div>
+                  <span>常住地</span>
+                  <span>浙江杭州</span>
+                </div>
+                <div>
+                  <span>星座</span>
+                  <span>水瓶座</span>
+                </div>
+                <div>
+                  <span>毕业院校</span>
+                  <span>北京电影学院</span>
+                </div>
+                <div>
+                  <span>专业</span>
+                  <span>影视表演</span>
+                </div>
+                <div>
+                  <span>特长</span>
+                  <span>唱歌、话剧、表演</span>
+                </div>
+                <div>
+                  <span>我的标签</span>
+                  <div>
+                    <span>影视演员</span>
+                    <span>歌手</span>
+                    <span>武术</span>
+                    <span>模特</span>
+                    <span>体育技能</span>
+                  </div>
+                </div>
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-icon class="iconfont icon-brief"></ion-icon>
+              <span>个人简介</span>
+              <div class="people-brief">
+                <p>2004年，因在 现代剧《月影风荷》中饰演女主角叶风荷而踏入演艺圈。2010年，凭借仙侠剧《仙剑奇侠传三》受到更多关注。2011年，因在宫廷剧《步步惊心》中饰演马尔泰·若曦而赢得颇高人气，并获得第十八届上海电视节白玉兰奖“最具人气女演员奖”等奖项。而她在第九届金鹰电视艺术节上则成为了金鹰节历史上的第四位金鹰女神。</p>
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-icon class="iconfont icon-work"></ion-icon>
+              <span>从业经历</span>
+              <span item-end style="font-size: 1.4rem;color:#999;">更多</span>
+              <ion-icon item-end name="ios-arrow-forward" style="color: #999;min-height:unset"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <div class="people-work">
+                <ion-slides #artistDetilSilde spaceBetween="10" slidesPerView='1.5'>
+                  <ion-slide *ngFor="let item of introList;let i=index;">
+                    <ion-item>
+                      <img class="clearfix" src="{{item.pic_url}}" alt="">
+                      <div class="work-detail clearfix">
+                        <ion-icon class="del-btn" name="ios-trash-outline" (click)="confirmDelWork()"></ion-icon>
+                        <h4>{{item.name}}</h4>
+                        <p>类型：{{item.tips}}</p>
+                        <p>角色：{{item.tips}}</p>
+                        <p>导演：{{item.tips}}</p>
+                        <p>合作艺人：{{item.tips}}</p>
+                      </div>
+                    </ion-item>
+                  </ion-slide>
+                </ion-slides>
+              </div>
+            </ion-item>
+            <ion-item>
+              <div class="work-date">
+                <ion-icon class="iconfont icon-date"></ion-icon>
+                <span>档期</span>
+                <div *ngIf="dataList[0].type==0" class="date-box-null">
+                  <span *ngIf="dataList[0].state==0" style="color:#14666e;">有档期</span>
+                  <span *ngIf="dataList[0].state==1" style="color:#999;">无档期</span>
+                </div>
+                <div *ngIf="dataList[0].type==1" class="date-box">
+                  <div class="data-list">
+                    <p>月份</p>
+                    <p>有无档期</p>
+                  </div>
+                  <div *ngFor="let item of dataList[0].list;" class="data-list">
+                    <p>{{item.month}}</p>
+                    <p *ngIf="item.state==0" style="color:#14666e;">有</p>
+                    <p *ngIf="item.state==1" style="color:#999;">无</p>
+                  </div>
+                </div>
+              </div>
+            </ion-item>
+          </div>
+        </div>
+        <!-- 相册 -->
+        <div *ngSwitchCase="1">
+          <div class="collage-intro" *ngIf="1;else elseBlank">
+            <ion-item class="artist-detil">
+              <ion-slides #artistDetilSilde  effect="coverflow" centeredSlides spaceBetween="20" initialSlide='1' slidesPerView='1.7'>
+                <ion-slide class="artist-list" *ngFor="let item of artistImg;let i=index;" (click)="cp.goto({view:'artist-detail',id:i})">
+                  <ion-item>
+                    <img src="{{item.src}}" alt="">
+                    <h6 class="artist-name">Username</h6>
+                    <p>
+                      <span style="font-size: 1.3rem;">演员</span>
+                    </p>
+                  </ion-item>
+                </ion-slide>
+              </ion-slides>
+            </ion-item>
+          </div>
+          <ng-template #elseBlank>
+            <div class="blank">
+              <ion-icon class="iconfont icon-blank"></ion-icon>
+              <p>亲，此处没有内容～！</p>
+            </div>
+          </ng-template>
+        </div>
+        <!-- 视频 -->
+        <div *ngSwitchCase="2">
+          <div class="parameter" *ngIf="1;else elseBlank">
+            视频
+          </div>
+          <ng-template #elseBlank>
+            <div class="blank">
+              <ion-icon class="iconfont icon-blank"></ion-icon>
+              <p>亲，此处没有内容～！</p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <button (click)="contactTA()" ion-button color="change">联系TA</button>
+</ion-footer>

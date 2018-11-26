@@ -1,0 +1,108 @@
+<ion-header>
+    <ion-navbar color="change">
+      <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
+    <!-- <div class="transheader">
+      <img src="{{notice.pic_url}}" />
+      <ion-header>
+        <ion-navbar>
+          <h4> 注册 </h4>
+        </ion-navbar>
+      </ion-header>
+    </div> -->
+    <div class="notice-head">
+      <img src="{{headBg}}" alt="" class="head-bg">
+      <div class="bg-cover"></div>
+      <ion-item class="head-info" padding>
+        <img class="clearfix" src="{{notice.pic_url}}" alt="">
+        <div class="notice-info clearfix">
+          <p>类型：{{notice.type}}</p>
+          <p>导演：{{notice.director}}</p>
+          <p>开机时间：{{notice.start_time}}</p>
+          <p>周期：{{notice.time}}</p>
+          <p>地点：{{notice.addr}}</p>
+          <h4>
+            <span>{{notice.num}}</span>个角色正在招募</h4>
+        </div>
+      </ion-item>
+    </div>
+    <ion-item>
+      <div class="all">
+          <div class="list-all">
+              <div class="list-title">
+                  <ion-icon class="iconfont icon-artist"></ion-icon>
+                  <span class="tile">艺人选拔题目</span>
+                </div>
+                <div  class="list-title-con">{{xbName}}</div>
+                <p class="list-title-time"><span class="icon iconfont icon-time"></span><span class="time">视频时长:</span>3 - 5分钟</p>
+          </div>
+      </div>
+
+    </ion-item>
+    <div class="logistics">
+        <ion-item>
+            <ion-label class="tile">艺人投递作品</ion-label>
+            <ion-select placeholder="" multiple="false" interface="action-sheet"
+            cancelText="取消" [(ngModel)]="ship" (ngModelChange)="timeFn()">
+            <ion-option *ngFor="let item1 of timeList" [value]="item1">{{item1}}</ion-option>
+            </ion-select>
+        </ion-item>
+      
+    </div>
+    <ion-item>
+        <div class="all">
+            <div class="list-all">
+                <div class="list-title">
+                    <ion-icon class="iconfont icon-artist"></ion-icon>
+                    <span class="tile">更多信息</span>
+                  </div>
+            </div>
+            <div class="con-list">
+                <p><span class="con-list-span">出品公司</span><span>华纳兄弟影业公司</span></p>
+                <p><span class="con-list-span">制片公司</span><span>华纳兄弟影业公司</span></p>
+                <p><span class="con-list-span">编辑团队</span><span>钱秋穗 </span></p>
+                <p><span class="con-list-span">选角导演</span><span>不了苦辣s</span></p>
+                <p><span class="con-list-span">演员副导演</span><span>华公司</span></p>
+                <p><span class="con-list-span">邮箱</span><span>1652491224@qq.com</span></p>
+                <p style="margin-bottom:0.5rem;"><span class="con-list-span">地址</span><span>浙江杭州</span></p>  
+            </div>
+            
+        </div>
+      </ion-item>
+      <ion-item class="introduce">
+          <div class="all">
+              <div class="list-all">
+                  <div class="list-title">
+                      <ion-icon class="iconfont icon-artist"></ion-icon>
+                      <span class="tile">剧情介绍</span>
+                    </div>
+              </div>
+              <div class="all-introduce">
+                {{introduce}}
+              </div>
+          </div>
+    
+        </ion-item>
+        <ion-item class="introduce">
+          <div class="all">
+              <div class="list-all">
+                  <div class="list-title">
+                      <ion-icon class="iconfont icon-artist"></ion-icon>
+                      <span class="tile">招募角色</span>
+                    </div>
+              </div>
+              <p class="sole">
+                <span class="sole-name">白领</span><span>女</span>
+              </p>
+              <div class="all-introduce">
+                {{role}}
+              </div>
+          </div>
+    
+        </ion-item>
+  </ion-content>
+  <ion-footer>
+    <button (click)="cp.goto({view:'artist-works'})" ion-button color="change">选取角色</button>
+</ion-footer>

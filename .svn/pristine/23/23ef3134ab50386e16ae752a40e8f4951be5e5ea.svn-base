@@ -1,0 +1,27 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CommonProvider } from "../../providers/common/common";
+
+@IonicPage({
+  name: 'notice-detail',
+  segment: 'notice-detail/:title/:id'
+})
+@Component({
+  selector: 'page-notice-detail',
+  templateUrl: 'notice-detail.html',
+})
+export class NoticeDetailPage {
+  title = '详情';
+  headBg = 'https://t12.baidu.com/it/u=373943879,1801230783&fm=76';
+  notice = { lawyer_id: 1, name: '甲申祭', type: '电影', director: '布鲁斯', start_time: '2018/09/21', time: '60-90天', addr: '横店', num: 32, pic_url: '../../assets/imgs/lawyer1.png' };
+  artistList = [{ src: '../../assets/imgs/avatar.png', name: '西蒙', type: '1', vip: 2 }, { src: '../../assets/imgs/notice2.png', name: '西蒙', type: '2', vip: 2 }, { src: '../../assets/imgs/organ1.png', name: '西蒙', type: '3', vip: 2 }, { src: '../../assets/imgs/notice1.png', name: '西蒙', type: '4', vip: 2 }, { src: '../../assets/imgs/organ2.png', name: '哈哈', type: '5演员' }, { src: '../../assets/imgs/organ1.png', name: '西蒙', type: '6演员', vip: 2 }, { src: '../../assets/imgs/avatar.png', name: '西蒙', type: '7演员', vip: 2 }, { src: '../../assets/imgs/organ1.png', name: '西蒙', type: '8学生', vip: 2 }, { src: '../../assets/imgs/organ2.png', name: '哈哈', type: '9演员' }];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cp: CommonProvider) {
+  }
+  ionViewWillEnter() {
+    console.log('enter')
+  }
+  ionViewDidLoad() {
+    this.cp.getNode();
+    console.log('ionViewDidLoad NoticeDetailPage', this.navParams);
+  }
+}

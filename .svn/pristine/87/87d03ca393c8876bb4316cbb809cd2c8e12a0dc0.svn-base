@@ -1,0 +1,25 @@
+import { Component,Input } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+/**
+ * Generated class for the MyOrganPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage({ name: 'my-organ' })
+@Component({
+  selector: 'page-my-organ',
+  templateUrl: 'my-organ.html',
+})
+export class MyOrganPage {
+  @Input() organs = [{src: '../../assets/imgs/organ1.png', title: ' 梦想', people: 20,type:'电视剧',tips:['eager','hot'],director:'布鲁斯',start_time:'2018/09/16' },{src: '../../assets/imgs/organ2.png', title: '三生三世 十里桃花', people: 2,type:'电视剧',tips:['hot'],director:'黛尔',start_time:'2018/12/16' } ];
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad MyOrganPage');
+  }
+
+}

@@ -1,0 +1,26 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>我的设置</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background:#fafafa;">
+  <div class="setting_box">
+    <!-- <div class="setting_mid">
+      <span>账号管理</span>
+      <ion-icon ion-end name="ios-arrow-forward-outline"></ion-icon>
+    </div> -->
+    <div class="setting_mid" (click)="cp.goto({view:'about'})">
+      <span>关于我们</span>
+      <ion-icon ion-end name="ios-arrow-forward-outline"></ion-icon>
+    </div>
+    <div class="setting_mid" (click)="cp.goto({view:'suggestion'})">
+      <span>意见反馈</span>
+      <ion-icon ion-end name="ios-arrow-forward-outline"></ion-icon>
+    </div>
+    <div class="loginout">
+      <button color="change" (click)="logout()">退出登录</button>
+    </div>
+  </div>
+</ion-content>

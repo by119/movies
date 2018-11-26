@@ -1,0 +1,12 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>相册</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="album-list" *ngFor="let item of photoarrInfo;let i=index;">
+        <img src="{{item}}" alt="">
+    </div>
+</ion-content>

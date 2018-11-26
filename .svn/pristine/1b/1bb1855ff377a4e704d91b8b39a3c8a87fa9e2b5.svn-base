@@ -1,0 +1,59 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+@IonicPage({
+  name: 'notice-detail',
+  segment: 'notice-detail/:title/:id'
+})
+@Component({
+  selector: 'page-notice-detail',
+  templateUrl: 'notice-detail.html',
+})
+export class NoticeDetailPage {
+  title = '详情';
+  headBg = 'https://t12.baidu.com/it/u=373943879,1801230783&fm=76';
+  notice = { lawyer_id: 1, name: '甲申祭', type: '电影', director: '布鲁斯', start_time: '2018/09/21', time: '60-90天', addr: '横店', num: 32, pic_url: '../../assets/imgs/lawyer1.png' };
+  artistList = [{ src: '../../assets/imgs/avatar.png', name: '西蒙', type: '1', vip: 2 }, { src: '../../assets/imgs/notice2.png', name: '西蒙', type: '2', vip: 2 }, { src: '../../assets/imgs/organ1.png', name: '西蒙', type: '3', vip: 2 }, { src: '../../assets/imgs/notice1.png', name: '西蒙', type: '4', vip: 2 }, { src: '../../assets/imgs/organ2.png', name: '哈哈', type: '5演员' }, { src: '../../assets/imgs/organ1.png', name: '西蒙', type: '6演员', vip: 2 }, { src: '../../assets/imgs/avatar.png', name: '西蒙', type: '7演员', vip: 2 }, { src: '../../assets/imgs/organ1.png', name: '西蒙', type: '8学生', vip: 2 }, { src: '../../assets/imgs/organ2.png', name: '哈哈', type: '9演员' }];
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+  ionViewWillEnter() {
+    console.log('enter')
+  }
+  ionViewDidLoad() {
+    this.getNode();
+    console.log('ionViewDidLoad NoticeDetailPage', this.navParams);
+  }
+
+  getNode() {
+    let parentNode = document.getElementById("container");
+    let childNodeArray: any = parentNode.getElementsByClassName("box");
+    let screenWidth = document.documentElement.clientWidth;
+    let childWidth = childNodeArray[0].offsetWidth;
+    let num = Math.floor(screenWidth / childWidth); //获得一排摆的个数 用Math.floor()转换为整数
+    parentNode.style.cssText = "width:" + childWidth * num + "px; margin:0 auto"; //固定container的宽并设置居中
+    this.setImagePosition(num, childNodeArray);
+  }
+  setImagePosition(num, childArray) {
+    var imgHeightArray = [];//定义数组用于存放所有图片的高度
+    for (var i = 0; i < childArray.length; i++) { //遍历所有图片
+      if (i < num) {
+        imgHeightArray[i] = childArray[i].offsetHeight; //取得第一排图片的高度
+      } else {
+        var minHeight = Math.min.apply(null, imgHeightArray); //获取第一排图片中高度最小的图片
+        var minIndex = this.getMinHeight(imgHeightArray, minHeight); //函数获得高度最小的图片的位置
+        childArray[i].style.position = "absolute"; //绝对定位图片
+        childArray[i].style.top = minHeight + "px"; //图片距顶部像素
+        childArray[i].style.left = childArray[minIndex].offsetLeft + "px"; //图片距左的像素
+        imgHeightArray[minIndex] = imgHeightArray[minIndex] + childArray[i].offsetHeight; //将最低高度的box的高度加上它下方的box高度
+      }
+    }
+  }
+
+  getMinHeight(imgHeightArray, minHeight) {
+    for (var i in imgHeightArray) {
+      if (imgHeightArray[i] == minHeight) { //循环所有数组的高度 让它等于最小图片的高度 返回i值
+        return i;
+      }
+    }
+  }
+}

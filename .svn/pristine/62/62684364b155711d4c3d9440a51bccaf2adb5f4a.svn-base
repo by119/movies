@@ -1,0 +1,35 @@
+import { Component,Input } from '@angular/core';
+import { CommonProvider } from "../../providers/common/common";
+@Component({
+  selector: 'organ',
+  templateUrl: 'organ.html'
+})
+export class OrganComponent {
+
+  @Input('item') item;
+  @Input('lastPage') lastPage;
+  text: string;
+
+  constructor(
+    public cp:CommonProvider
+  ) {
+    console.log('Hello OrganComponent Component');
+    this.text = 'Hello World';
+    console.log(this.item,this.lastPage,'last')
+  }
+
+  // 删除我发布的需求
+  needDelete(){
+    this.cp.getData("annunciate/deleteAnnunciate",{
+      producer_id:2,
+      annunciate_id:4
+    }).then((res:any) =>{
+
+    })
+  }
+
+
+  confirmDel(){
+    console.log('删除组训')
+  }
+}

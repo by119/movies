@@ -1,0 +1,11 @@
+page-promo {
+    .scroll-content {
+        background-color: #fafafa;
+        .release{
+            position:fixed;
+            bottom:12rem;
+            right:1rem;
+            width:4rem;
+        }
+    }
+}

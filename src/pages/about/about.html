@@ -1,0 +1,13 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>关于我们</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding *ngIf="aboutInfo">
+  <div class="about">
+      <h1>{{aboutInfo.title}}</h1>
+      <p [innerHtml]="aboutInfo.content"></p>
+  </div>
+</ion-content>

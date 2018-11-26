@@ -1,0 +1,31 @@
+import { Component, Input } from "@angular/core";
+import { CommonProvider } from "../../providers/common/common";
+@Component({
+  selector: "video-ctrl",
+  templateUrl: "video.html"
+})
+export class VideoComponent {
+  @Input("videoUrl") videoUrl;
+  @Input("item") item;
+  @Input("lastPage") lastPage;
+  constructor(public cp: CommonProvider) {}
+
+  confirmDelVideo(id) {
+    this.cp.prompt(
+      "删除视频",
+      "确认删除视频？",
+      "取消",
+      () => {},
+      "删除",
+      () => {
+        this.cp
+          .getData("areist_video/del", {
+            id: id
+          })
+          .then((res: any) => {
+            this.cp.toast(res.msg);
+          });
+      }
+    );
+  }
+}

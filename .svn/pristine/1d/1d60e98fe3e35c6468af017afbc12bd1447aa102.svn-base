@@ -1,0 +1,19 @@
+
+<ion-header>
+  <ion-navbar color="change">
+    <ion-title>制片厂介绍</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="studio_box" *ngIf="studionInfo;else elseBlank;">
+      <h1>{{studionInfo?.company_name}}</h1>
+      <p>{{studionInfo?.introduction}}</p>
+  </div>  
+  <ng-template #elseBlank>
+      <div class="blank">
+        <ion-icon class="iconfont icon-blank"></ion-icon>
+        <p>亲，此处没有内容～</p>
+      </div>
+    </ng-template>
+</ion-content>
